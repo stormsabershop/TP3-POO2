@@ -1,3 +1,5 @@
+package tp2.etudiant.produit;
+
 public class Figurine extends Produit {
 
 	public void acheter() {

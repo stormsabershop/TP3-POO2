@@ -1,3 +1,5 @@
+package tp2.etudiant.produit;
+
 public class Neopixel extends TypeDeTechnologie {
 
 	public void calculerPourcentageBatterie() {

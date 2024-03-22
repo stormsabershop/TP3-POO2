@@ -1,3 +1,5 @@
+package tp2.etudiant.produit;
+
 public interface EliteEtTechnologie {
 
 	void setEliteOuNonElite();

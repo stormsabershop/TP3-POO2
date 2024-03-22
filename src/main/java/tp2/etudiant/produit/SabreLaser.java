@@ -1,3 +1,5 @@
+package tp2.etudiant.produit;
+
 public class SabreLaser extends Produit implements EliteEtTechnologie {
 
 	private boolean eliteOuNonElite;
