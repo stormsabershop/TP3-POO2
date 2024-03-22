@@ -30,7 +30,7 @@ public class SabreLaser extends Produit implements EliteEtTechnologie {
 
 	public void recharger() {
 		// TODO - implement SabreLaser.recharger
-		throw new UnsupportedOperationException();
+		System.out.println(typeTechnologie.getBatteryWattage());
 	}
 
 }
