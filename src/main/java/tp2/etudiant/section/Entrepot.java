@@ -2,6 +2,7 @@ package tp2.etudiant.section;
 
 
 import tp2.etudiant.boite.Boite;
+import tp2.etudiant.produit.SabreLaser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,33 @@ public class Entrepot {
                 [NOMBRE_TABLETTE];
     }
 
+    public boolean entreposeBoite1(Boite boite) {
+        boolean passage = false;
+
+        for (int i = 0; i < entreposage.length; i++) {
+            if (entreposage.length <= NOMBRE_CATEGORIES && entreposage.length > 0) {
+                if (boite.getNumeroCategorie() == categorieRange(i)) {
+                    for (int j = 0; j < entreposage[i].length; j++) {
+                        if (entreposage[i].length < NOMBRE_SECTION) {
+                            for (int k = 0; k < entreposage[i][j].length; k++) {
+                                if (entreposage[i][j].length < NOMBRE_TABLETTE){
+                                    entreposage[i][j][k] = boite;
+                                    passage = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return passage;
+    }
+
+
     public boolean entreposeBoite(Boite boite) {
+
+        boolean passage = false;
 
         int categorie = boite.getNumeroCategorie();
         int numeroProduit = boite.getNumeroProduit();
@@ -54,8 +81,11 @@ public class Entrepot {
             }
         }
         // Aucune section n'a pu accueillir la boîte
+
         return false;
     }
+
+
 
     public void retireBoite(Boite boite) {
         // Parcourir toutes les catégories
@@ -137,6 +167,18 @@ public class Entrepot {
     public Boite[][][] getBoites3D() {
 
         return entreposage;
+    }
+
+    public int categorieRange(int index){
+        int indexTrouve = -1;
+        for (int i = 0; i < entreposage[index].length; i++) {
+            for (int j = 0; j < entreposage[index][i].length; j++) {
+                if (entreposage[index][i][j] != null){
+                    indexTrouve = entreposage[index][i][j].getNumeroCategorie();
+                }
+            }
+        }
+        return indexTrouve;
     }
 
 
