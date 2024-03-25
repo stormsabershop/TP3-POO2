@@ -13,6 +13,11 @@ public class Casque extends AbstractProduit {
 
     @Override
     public String decrit() {
-        return null;
+        return toString();
+    }
+
+    @Override
+    public String toString() {
+        return "Casque{}";
     }
 }

@@ -39,6 +39,14 @@ public class SabreLaser extends AbstractProduit implements EliteEtTechnologie {
 
 	@Override
 	public String decrit() {
-		return null;
+		return toString();
+	}
+
+	@Override
+	public String toString() {
+		return "SabreLaser{" +
+				"eliteOuNonElite=" + eliteOuNonElite +
+				", typeTechnologie=" + typeTechnologie +
+				'}';
 	}
 }
