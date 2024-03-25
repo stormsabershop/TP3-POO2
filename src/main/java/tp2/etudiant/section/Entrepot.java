@@ -24,7 +24,7 @@ public class Entrepot {
         boolean passage = false;
 
         for (int i = 0; i < entreposage.length; i++) {
-            if (entreposage.length <= NOMBRE_CATEGORIES && entreposage.length > 0) {
+            if (entreposage.length <= NOMBRE_CATEGORIES || entreposage.length > 0) {
                 if (boite.getNumeroCategorie() == categorieRange(i)) {
                     for (int j = 0; j < entreposage[i].length; j++) {
                         if (entreposage[i].length < NOMBRE_SECTION) {
@@ -45,8 +45,6 @@ public class Entrepot {
 
 
     public boolean entreposeBoite(Boite boite) {
-
-        boolean passage = false;
 
         int categorie = boite.getNumeroCategorie();
         int numeroProduit = boite.getNumeroProduit();
@@ -82,6 +80,40 @@ public class Entrepot {
         }
         // Aucune section n'a pu accueillir la boîte
 
+        return false;
+    }
+
+    public boolean entreposeBoite3(Boite boite) {
+        int categorie = boite.getNumeroCategorie();
+
+        // Vérifier si la catégorie est valide
+        if (categorie < 0 || categorie >= entreposage.length) {
+            return false;
+        }
+
+        // Parcourir les sections de la catégorie
+        for (int sectionIndex = 0; sectionIndex < entreposage[categorie].length; sectionIndex++) {
+            Boite[] tablettes = entreposage[categorie][sectionIndex];
+            // Vérifier si la section peut accueillir la boîte
+            boolean sectionFull = true;
+            for (Boite b : tablettes) {
+                if (b == null) {
+                    sectionFull = false;
+                    break;
+                }
+            }
+            if (!sectionFull) {
+                // Trouver la première tablette libre dans la section
+                for (int tabletteIndex = 0; tabletteIndex < tablettes.length; tabletteIndex++) {
+                    if (tabletteIndex == 0 || tablettes[tabletteIndex - 1] != null) {
+                        // Placer la boîte sur la tablette libre
+                        tablettes[tabletteIndex] = boite;
+                        return true; // Boîte placée avec succès
+                    }
+                }
+            }
+        }
+        // Aucune section n'a pu accueillir la boîte
         return false;
     }
 
