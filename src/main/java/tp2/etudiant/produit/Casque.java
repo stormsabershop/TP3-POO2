@@ -2,6 +2,7 @@ package tp2.etudiant.produit;
 import tp2.application.AbstractProduit;
 
 public class Casque extends AbstractProduit {
+
     public Casque(String nom) {
         super(nom);
     }

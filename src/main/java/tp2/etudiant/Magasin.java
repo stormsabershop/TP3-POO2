@@ -7,6 +7,7 @@ import tp2.etudiant.boite.Boite;
 import tp2.etudiant.client.Achat;
 import tp2.etudiant.client.Panier;
 import tp2.etudiant.section.AireI;
+import tp2.etudiant.section.Charite;
 import tp2.etudiant.section.Entrepot;
 
 import java.time.LocalDateTime;
@@ -21,29 +22,50 @@ public class Magasin implements Modele {
     private Collection<Achat> achats = new ArrayList<>();
 
     private Panier panier;
+    private Entrepot entrepot; // modifier
+    private Charite charite;
+    private Collection<AireI> sections;
 
 
     public Magasin() {
         // Instanciez les attributs nécessaires
         panier = new Panier();
+        this.entrepot = new Entrepot();
     }
 
 
     @Override
     public Collection<AireI> getAllSections() {
 
-        return null;
+        return sections;
     }
 
     @Override
     public Descriptible getCharite() {
-        return null;
+        return charite;
     }
 
     @Override
     public int recevoirCommande(Collection<Boite> commande) {
 
-        return -1;
+        int boitesNonPlacees = 0;
+
+        // Récupération de l'entrepôt du magasin
+        Entrepot entrepot = getEntrepot();
+
+        // Parcours de chaque boîte de la commande
+        for (Boite boite : commande) {
+            // Tentative de placer la boîte dans l'entrepôt
+            boolean placee = entrepot.entreposeBoite(boite);
+
+            // Si la boîte n'a pas pu être placée, incrémentation du compteur
+            if (!placee) {
+                boitesNonPlacees++;
+            }
+        }
+
+        // Retour du nombre de boîtes non placées
+        return boitesNonPlacees;
     }
 
     public void placerProduits(Collection<Boite> boites, AireI section) {
@@ -89,7 +111,7 @@ public class Magasin implements Modele {
     }
 
     public Entrepot getEntrepot() {
-        return null;
+        return entrepot;
     }
 
 }

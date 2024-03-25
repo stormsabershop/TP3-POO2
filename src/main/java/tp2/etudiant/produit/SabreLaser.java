@@ -1,26 +1,18 @@
 package tp2.etudiant.produit;
 import tp2.application.AbstractProduit;
-public class SabreLaser extends AbstractProduit implements EliteEtTechnologie {
+public class SabreLaser extends AbstractProduit implements Elite {
 
 	private boolean eliteOuNonElite;
-	private TypeDeTechnologie typeTechnologie;
 
-	public SabreLaser(String nom) {
+	public SabreLaser(String nom, boolean siElite) {
 		super(nom);
+		this.eliteOuNonElite= siElite;
 	}
 
+
+	@Override
 	public void setEliteOuNonElite() {
-		// TODO - implement SabreLaser.setEliteOuNonElite
-		throw new UnsupportedOperationException();
-	}
 
-	public void setTypeTechnologie() {
-		// TODO - implement SabreLaser.setTypeTechnologie
-		throw new UnsupportedOperationException();
-	}
-
-	public TypeDeTechnologie getTypeTechnologie() {
-		return this.typeTechnologie;
 	}
 
 	public boolean isEliteOuNonElite() {
@@ -46,7 +38,6 @@ public class SabreLaser extends AbstractProduit implements EliteEtTechnologie {
 	public String toString() {
 		return "SabreLaser{" +
 				"eliteOuNonElite=" + eliteOuNonElite +
-				", typeTechnologie=" + typeTechnologie +
 				'}';
 	}
 }
