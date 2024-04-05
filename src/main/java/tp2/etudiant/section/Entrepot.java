@@ -52,13 +52,18 @@ public class Entrepot {
                 retval = true;
             } else {
                 if (boite.getNumeroCategorie() == categorieRange(i)) {
-                    for (int j = 0; j < entreposage[i].length && retval == false; j++) {
+                    for (int j = entreposage[i].length-1; j >= 0 && retval == false; j--) {
                         if (boite.getNumeroProduit() == produitSection(i, j)) {
                             if (!verifSectionPlein(i, j)) {
                                 for (int k = 0; k < entreposage[i][j].length && retval == false; k++) {
                                     if (entreposage[i][j][k] == null) {
                                         entreposage[i][j][k] = boite;
                                         retval = true;
+                                    } else{
+                                        if (k > 0){
+                                            entreposage[i][j][k-1] = entreposage[i][j][k];
+                                            entreposage[i][j][k] = boite;
+                                        }
                                     }
                                 }
                             } else {
@@ -69,6 +74,34 @@ public class Entrepot {
                 }
             }
 
+        }
+        return retval;
+    }
+
+    public boolean entreposeBoite1(Boite boite) {
+        boolean retval = false;
+        for (int i = 0; i < NOMBRE_CATEGORIES && retval == false; i++) {
+            if (boite.getNumeroCategorie() == categorieRange(i)){
+                for (int j = 0; j < NOMBRE_SECTION && retval == false; j++) {
+                    if (boite.getNumeroProduit() == produitSection(j,i)){
+                        if(!verifSectionPlein(i, j)){
+                            for (int k = NOMBRE_TABLETTE-1; k >= 0 && retval == false; k--) {
+                                if (entreposage[i][j][k] == null){
+                                    entreposage[i][j][k] = boite;
+                                } else{
+                                    if (k > 0){
+                                        entreposage[i][j][k-1] = entreposage[i][j][k];
+                                        entreposage[i][j][k] = boite;
+                                    }
+                                }
+                            }
+                        }
+                        else {
+                            return false;
+                        }
+                    }
+                }
+            }
         }
         return retval;
     }
