@@ -55,16 +55,14 @@ public class Magasin implements Modele {
 
         // Parcours de chaque boîte de la commande
         for (Boite boite : commande) {
-            // Tentative de placer la boîte dans l'entrepôt
             boolean placee = entrepot.entreposeBoite(boite);
 
-            // Si la boîte n'a pas pu être placée, incrémentation du compteur
+
             if (!placee) {
                 boitesNonPlacees++;
             }
         }
 
-        // Retour du nombre de boîtes non placées
         return boitesNonPlacees;
     }
 

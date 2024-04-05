@@ -20,7 +20,7 @@ public class Entrepot {
                 [NOMBRE_TABLETTE];
     }
 
-    public boolean entreposeBoite1(Boite boite) {
+    /*public boolean entreposeBoite1(Boite boite) {
         boolean passage = false;
 
         for (int i = 0; i < entreposage.length; i++) {
@@ -41,49 +41,88 @@ public class Entrepot {
         }
 
         return passage;
-    }
+    }*/
 
 
     public boolean entreposeBoite(Boite boite) {
-
-        int categorie = boite.getNumeroCategorie();
-        int numeroProduit = boite.getNumeroProduit();
-
-        // Vérifier si la catégorie est valide
-        if (categorie < 0 || categorie >= entreposage.length) {
-            return false;
-        }
-
-        Boite[][] section = entreposage[categorie];
-
-        // Parcourir toutes les sections de la catégorie pour trouver une section appropriée pour stocker la boîte
-        for (int sectionIndex = 0; sectionIndex < section.length; sectionIndex++) {
-            Boite[] tablettes = section[sectionIndex];
-            // Vérifier si la section peut accueillir le produit
-            boolean sectionFull = true;
-            for (Boite b : tablettes) {
-                if (b == null) {
-                    sectionFull = false;
-                    break;
-                }
-            }
-            if (!sectionFull) {
-                // Trouver la première tablette libre dans la section
-                for (int tabletteIndex = 0; tabletteIndex < tablettes.length; tabletteIndex++) {
-                    if (tablettes[tabletteIndex] == null) {
-                        // Placer la boîte sur la tablette libre
-                        tablettes[tabletteIndex] = boite;
-                        return true; // Boîte placée avec succès
+        boolean retval = false;
+        for (int i = 0; i < entreposage.length && retval == false; i++) {
+            if (rangerLibre(i)) {
+                entreposage[i][0][0] = boite;
+                retval = true;
+            } else {
+                if (boite.getNumeroCategorie() == categorieRange(i)) {
+                    for (int j = 0; j < entreposage[i].length && retval == false; j++) {
+                        if (boite.getNumeroProduit() == produitSection(i, j)) {
+                            if (!verifSectionPlein(i, j)) {
+                                for (int k = 0; k < entreposage[i][j].length && retval == false; k++) {
+                                    if (entreposage[i][j][k] == null) {
+                                        entreposage[i][j][k] = boite;
+                                        retval = true;
+                                    }
+                                }
+                            } else {
+                                return false;
+                            }
+                        }
                     }
                 }
             }
-        }
-        // Aucune section n'a pu accueillir la boîte
 
-        return false;
+        }
+        return retval;
     }
 
-    public boolean entreposeBoite3(Boite boite) {
+    public boolean rangerLibre(int indexRangée) {
+
+        boolean estLibre = true;
+        for (int i = 0; i < entreposage[indexRangée].length; i++) {
+            for (int j = 0; j < entreposage[indexRangée][i].length; j++) {
+                if (entreposage[indexRangée][i][j] != null) {
+                    estLibre = false;
+                }
+            }
+
+        }
+        return estLibre;
+
+    }
+
+    public int categorieRange(int index) {
+        int indexTrouve = -1;
+        for (int i = 0; i < entreposage[index].length; i++) {
+            for (int j = 0; j < entreposage[index][i].length; j++) {
+                if (entreposage[index][i][j] != null) {
+                    indexTrouve = entreposage[index][i][j].getNumeroCategorie();
+                }
+            }
+        }
+        return indexTrouve;
+    }
+
+    public int produitSection(int indexRange, int indexSection) {
+        int indexTrouv = -1;
+        for (int j = 0; j < entreposage[indexRange][indexSection].length; j++) {
+            if (entreposage[indexRange][indexSection][j] != null) {
+                indexTrouv = entreposage[indexRange][indexSection][j].getNumeroProduit();
+
+            }
+        }
+        return indexTrouv;
+    }
+
+    public boolean verifSectionPlein(int numeroRangee, int numeroSection) {
+        boolean estLibre = true;
+        for (int i = 0; i < entreposage[numeroRangee][numeroSection].length; i++) {
+            if (entreposage[numeroRangee][numeroSection][i] == null) {
+                estLibre = false;
+                break;
+            }
+        }
+        return estLibre;
+    }
+
+   /* public boolean entreposeBoite3(Boite boite) {
         int categorie = boite.getNumeroCategorie();
 
         // Vérifier si la catégorie est valide
@@ -115,7 +154,7 @@ public class Entrepot {
         }
         // Aucune section n'a pu accueillir la boîte
         return false;
-    }
+    }*/
 
 
 
@@ -160,57 +199,28 @@ public class Entrepot {
 
     // passage 3d vers 2d les 2 preière dimension sont fusionnées
     public Boite[][] getBoites2D() {
+        int dim1 = entreposage.length;
+        int dim2 = entreposage[0].length;
+        int dim3 = entreposage[0][0].length;
 
-        List<Boite[]> boites2D = new ArrayList<>();
-        for (Boite[][] section : entreposage) {
-            for (Boite[] tablettes : section) {
-                // Vérifier si la section contient au moins une boîte
-                boolean sectionHasBoite = false;
-                for (Boite boite : tablettes) {
-                    if (boite != null) {
-                        sectionHasBoite = true;
-                        break;
-                    }
-                }
-                // Si la section contient au moins une boîte, ajouter les tablettes à la représentation 2D
-                if (sectionHasBoite) {
-                    boites2D.add(tablettes);
+        Boite[][] boite2D = new Boite[dim1 * dim2][dim3];
+        for (int i = 0; i < dim1; i++) {
+            for (int j = 0; j < dim2; j++) {
+                for (int k = 0; k < dim3; k++) {
+                    boite2D[i * dim2 + j][k] = entreposage[i][j][k];
                 }
             }
         }
-        return boites2D.toArray(new Boite[0][]);
+        return boite2D;
     }
 
-    public Boite[] getBoites1D() {
+    /*public Boite[] getBoites1D() {
 
-        List<Boite> boites1D = new ArrayList<>();
-        for (Boite[][] section : entreposage) {
-            for (Boite[] tablettes : section) {
-                for (Boite boite : tablettes) {
-                    if (boite != null) {
-                        boites1D.add(boite);
-                    }
-                }
-            }
-        }
-        return boites1D.toArray(new Boite[0]);
-    }
+    }*/
 
     public Boite[][][] getBoites3D() {
 
         return entreposage;
-    }
-
-    public int categorieRange(int index){
-        int indexTrouve = -1;
-        for (int i = 0; i < entreposage[index].length; i++) {
-            for (int j = 0; j < entreposage[index][i].length; j++) {
-                if (entreposage[index][i][j] != null){
-                    indexTrouve = entreposage[index][i][j].getNumeroCategorie();
-                }
-            }
-        }
-        return indexTrouve;
     }
 
 
