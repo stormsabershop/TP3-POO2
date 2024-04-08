@@ -44,12 +44,14 @@ public class Entrepot {
     }*/
 
 
-    public boolean entreposeBoite(Boite boite) {
+    public boolean entreposeBoite10(Boite boite) {
+        int nbExec = 0;
         boolean retval = false;
         for (int i = 0; i < entreposage.length && retval == false; i++) {
             if (rangerLibre(i)) {
                 entreposage[i][0][0] = boite;
                 retval = true;
+                nbExec++;
             } else {
                 if (boite.getNumeroCategorie() == categorieRange(i)) {
                     for (int j = entreposage[i].length-1; j >= 0 && retval == false; j--) {
@@ -59,10 +61,12 @@ public class Entrepot {
                                     if (entreposage[i][j][k] == null) {
                                         entreposage[i][j][k] = boite;
                                         retval = true;
+                                        nbExec++;
                                     } else{
                                         if (k > 0){
                                             entreposage[i][j][k-1] = entreposage[i][j][k];
                                             entreposage[i][j][k] = boite;
+                                            nbExec++;
                                         }
                                     }
                                 }
@@ -78,26 +82,64 @@ public class Entrepot {
         return retval;
     }
 
-    public boolean entreposeBoite1(Boite boite) {
+    /*
+    public boolean ExentreposeBoite(Boite boite) {
+        int nbExec = 0;
         boolean retval = false;
-        for (int i = 0; i < NOMBRE_CATEGORIES && retval == false; i++) {
-            if (boite.getNumeroCategorie() == categorieRange(i)){
-                for (int j = 0; j < NOMBRE_SECTION && retval == false; j++) {
-                    if (boite.getNumeroProduit() == produitSection(j,i)){
-                        if(!verifSectionPlein(i, j)){
-                            for (int k = NOMBRE_TABLETTE-1; k >= 0 && retval == false; k--) {
-                                if (entreposage[i][j][k] == null){
-                                    entreposage[i][j][k] = boite;
-                                } else{
-                                    if (k > 0){
-                                        entreposage[i][j][k-1] = entreposage[i][j][k];
+        for (int i = 0; i < entreposage.length && retval == false; i++) {
+            if (rangerLibre(i)) {
+                entreposage[i][0][0] = boite;
+                retval = true;
+                nbExec++;
+            } else {
+                if (boite.getNumeroCategorie() == categorieRange(i)) {
+                    for (int j = 0; j < entreposage[i].length && retval == false; j++) {
+                        if (boite.getNumeroProduit() == produitSection(i, j)) {
+                            if (!verifSectionPlein(i, j)) {
+                                for (int k = 0; k < entreposage[i][j].length && retval == false; k++) {
+                                    if (entreposage[i][j][k] == null) {
                                         entreposage[i][j][k] = boite;
+                                        retval = true;
+                                        nbExec++;
                                     }
                                 }
+                            } else {
+                                return false;
                             }
                         }
-                        else {
-                            return false;
+                    }
+                }
+            }
+
+        }
+        return retval;
+    }
+
+     */
+
+    public boolean entreposeBoite(Boite boite) {
+        int nbExec = 0;
+        boolean retval = false;
+        for (int i = 0; i < entreposage.length && retval == false; i++) {
+            if (rangerLibre(i)) {
+                entreposage[i][0][0] = boite;
+                retval = true;
+                nbExec++;
+            } else {
+                if (boite.getNumeroCategorie() == categorieRange(i)) {
+                    for (int j = 0; j < entreposage[i].length && retval == false; j++) {
+                        if (boite.getNumeroProduit() == produitSection(i, j)) {
+                            if (!verifSectionPlein(i, j)) {
+                                for (int k = entreposage[i][j].length - 2; k >= 0 && retval == false; k--) {
+                                    entreposage[i][j][k + 1] = entreposage[i][j][k];
+                                    entreposage[i][j][k] = null;
+                                }
+                                entreposage[i][j][0] = boite;
+                                retval = true;
+                                nbExec++;
+                            } else {
+                                return false;
+                            }
                         }
                     }
                 }
