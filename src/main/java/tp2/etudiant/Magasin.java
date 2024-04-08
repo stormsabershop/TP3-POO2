@@ -9,6 +9,7 @@ import tp2.etudiant.client.Panier;
 import tp2.etudiant.section.AireI;
 import tp2.etudiant.section.Charite;
 import tp2.etudiant.section.Entrepot;
+import tp2.etudiant.section.Presentoires;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -29,8 +30,9 @@ public class Magasin implements Modele {
 
     public Magasin() {
         // Instanciez les attributs nécessaires
-        panier = new Panier();
+        this.panier = new Panier();
         this.entrepot = new Entrepot();
+        this.sections = new ArrayList<AireI>(List.of(new Presentoires()));
 
     }
 

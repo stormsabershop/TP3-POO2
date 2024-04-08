@@ -17,6 +17,6 @@ public class Charite implements Descriptible {
 
     @Override
     public String decrit() {
-        return null;
+        return "ici la charité";
     }
 }

@@ -8,7 +8,7 @@ import java.util.Collection;
 public class AiresDesPresentoires implements AireI {
     @Override
     public String decrit() {
-        return null;
+        return "aire des presentoires";
     }
 
     @Override

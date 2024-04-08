@@ -3,32 +3,40 @@ package tp2.etudiant.section;
 import tp2.application.AbstractProduit;
 import tp2.etudiant.boite.Boite;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class Presentoires implements AireI {
+    Collection<AbstractProduit> produits = new ArrayList<>();
+
+    public Presentoires() {
+        this.produits = produits;
+    }
     @Override
     public String decrit() {
-        return null;
+        return "salut comment ca va";
     }
 
     @Override
     public Collection<AbstractProduit> retireProduits(Collection<AbstractProduit> items) {
-        return null;
+        produits.removeAll(items);
+        return produits;
     }
 
     @Override
     public Collection<AbstractProduit> getAllProduits() {
-        return null;
+        return produits;
     }
 
     @Override
-    public Collection<AbstractProduit> placerProduits(Boite produits) {
-        return null;
+    public Collection<AbstractProduit> placerProduits(Boite produitsPourAjouter) {
+        produits.addAll(produitsPourAjouter.getContenu());
+        return produits;
     }
 
     @Override
-    public boolean placerProduits(Collection<AbstractProduit> produits) {
-        return false;
+    public boolean placerProduits(Collection<AbstractProduit> produitsPourAjouter) {
+        return produits.addAll(produitsPourAjouter);
     }
 
     @Override
@@ -43,6 +51,8 @@ public class Presentoires implements AireI {
 
     @Override
     public String toString() {
-        return "Presentoires{}";
+        return "Presentoires:\n{" +
+                "produits=" + produits +
+                '}';
     }
 }
