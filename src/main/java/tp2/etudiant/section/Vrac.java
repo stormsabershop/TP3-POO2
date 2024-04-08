@@ -8,7 +8,7 @@ import java.util.Collection;
 public class Vrac implements AireI{
     @Override
     public String decrit() {
-        return null;
+        return "vrac ici";
     }
 
     @Override
