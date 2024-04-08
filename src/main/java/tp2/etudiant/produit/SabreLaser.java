@@ -1,6 +1,6 @@
 package tp2.etudiant.produit;
 import tp2.application.AbstractProduit;
-public class SabreLaser extends AbsstractJouet implements Elite {
+public class SabreLaser extends AbstractProduit implements Elite {
 
 	private boolean eliteOuNonElite;
 
@@ -32,5 +32,10 @@ public class SabreLaser extends AbsstractJouet implements Elite {
 	@Override
 	public String toString() {
 		return "Sabre laser : Categorie= " + getNumeroCategorie() +", Nom= "+getNom() + "eliteOuNon"+eliteOuNonElite+", Prix= "+getPrix();
+	}
+
+	@Override
+	public int getNumeroCategorie() {
+		return 1;
 	}
 }
