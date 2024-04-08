@@ -33,6 +33,7 @@ public class Magasin implements Modele {
         this.panier = new Panier();
         this.entrepot = new Entrepot();
         this.sections = new ArrayList<AireI>(List.of(new Presentoires()));
+        this.charite = new Charite();
 
     }
 
