@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public abstract class AbstractProduit implements Descriptible, Cloneable, Serializable {
+    private int prix;
     private String nom;
     private int numSerie; // unique pour chaque produit
     private int numProduit; // associer au type de produit
@@ -15,13 +16,20 @@ public abstract class AbstractProduit implements Descriptible, Cloneable, Serial
     private static int numSerieCompteur = 1;
     private static int numProduitCompteur =0;
 
-    public AbstractProduit(String nom) {
+    public AbstractProduit(String nom, int prix) {
         this.nom = nom;
         this.numProduit = numProduitCompteur++;
         this.numSerie = numSerieCompteur++;
+        this.prix=prix;
     }
 
+    public int getPrix() {
+        return prix;
+    }
 
+    public void setPrix(int prix) {
+        this.prix = prix;
+    }
 
     @Override
     public String toString() {

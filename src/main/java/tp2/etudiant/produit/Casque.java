@@ -1,15 +1,11 @@
 package tp2.etudiant.produit;
 import tp2.application.AbstractProduit;
 
-public class Casque extends AbstractProduit {
+public class Casque extends AbstractEcouteurs {
 
-    public Casque(String nom) {
-        super(nom);
-    }
 
-    @Override
-    public int getNumeroCategorie() {
-        return 0;
+    public Casque(String nom,int prix) {
+        super(nom,prix);
     }
 
     @Override
@@ -19,6 +15,8 @@ public class Casque extends AbstractProduit {
 
     @Override
     public String toString() {
-        return "Casque{}";
+        return "Casque: Categorie= " + getNumeroCategorie() +", Nom= "+getNom() +", Prix"+getPrix();
     }
+
+
 }

@@ -31,6 +31,7 @@ public class Magasin implements Modele {
         // Instanciez les attributs nécessaires
         panier = new Panier();
         this.entrepot = new Entrepot();
+
     }
 
 
@@ -42,6 +43,7 @@ public class Magasin implements Modele {
 
     @Override
     public Descriptible getCharite() {
+
         return charite;
     }
 
@@ -49,9 +51,6 @@ public class Magasin implements Modele {
     public int recevoirCommande(Collection<Boite> commande) {
 
         int boitesNonPlacees = 0;
-
-        // Récupération de l'entrepôt du magasin
-        Entrepot entrepot = getEntrepot();
 
         // Parcours de chaque boîte de la commande
         for (Boite boite : commande) {
