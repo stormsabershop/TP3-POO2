@@ -71,7 +71,9 @@ public class Magasin implements Modele {
     public void placerProduits(Collection<Boite> boites, AireI section) {
         Iterator<Boite> iterator = boites.iterator();
         while (iterator.hasNext()){
-            section.placerProduits(iterator.next());
+            Boite boite = iterator.next();
+            section.placerProduits(boite);
+            entrepot.retireBoite(boite);
         }
     }
 
