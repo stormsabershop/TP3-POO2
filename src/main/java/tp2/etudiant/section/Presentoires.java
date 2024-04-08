@@ -14,7 +14,10 @@ public class Presentoires implements AireI {
     }
     @Override
     public String decrit() {
-        return toString();
+        if (produits.isEmpty()) {
+            return toString();
+        } else return "Présentoires";
+
     }
 
     @Override
@@ -51,8 +54,7 @@ public class Presentoires implements AireI {
 
     @Override
     public String toString() {
-        return "Presentoires:\n{" +
-                "produits=" + produits +
-                '}';
+        return "Presentoires:\n" +
+                "(vide)";
     }
 }
