@@ -14,7 +14,7 @@ public class Presentoires implements AireI {
     }
     @Override
     public String decrit() {
-        return "salut comment ca va";
+        return toString();
     }
 
     @Override
