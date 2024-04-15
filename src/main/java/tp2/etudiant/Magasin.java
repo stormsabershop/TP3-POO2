@@ -8,16 +8,14 @@ import tp2.etudiant.client.Achat;
 import tp2.etudiant.client.Panier;
 import tp2.etudiant.section.*;
 
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Magasin implements Modele {
 
 
-    private Collection<Achat> achats = new ArrayList<>();
+    private Collection<Achat> achats;
 
     private Panier panier;
     private Entrepot entrepot; // modifier
@@ -27,8 +25,13 @@ public class Magasin implements Modele {
     private Vrac vrac;
 
 
+    public static final int NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES = 15;
+    public static final int NOMBRE_DE_AIRE_DES_PRESENTOIRES_MAX = 6;
+
+
     public Magasin() {
         // Instanciez les attributs nécessaires
+        this.achats = new ArrayList<>();
         this.panier = new Panier();
         this.entrepot = new Entrepot();
         this.sections = new ArrayList<AireI>(List.of(new Vrac(), new AiresDesPresentoires()));
@@ -68,12 +71,70 @@ public class Magasin implements Modele {
         return boitesNonPlacees;
     }
 
-    public void placerProduits(Collection<Boite> boites, AireI section) {
+    public void placerProduits1(Collection<Boite> boites, AireI section) {
         Iterator<Boite> iterator = boites.iterator();
         while (iterator.hasNext()){
             Boite boite = iterator.next();
             section.placerProduits(boite);
             entrepot.retireBoite(boite);
+        }
+    }
+
+    public void placerProduits(Collection<Boite> boites, AireI section) {
+        Iterator<Boite> iterator = boites.iterator();
+        while (iterator.hasNext()){
+            Boite boite = iterator.next();
+            if (section.getAllProduits().size() == 0) {
+                section.placerProduits(boite);
+                entrepot.retireBoite(boite);
+            } else if (section.getAllProduits().size() != NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES) {
+                List<AbstractProduit> produitsDansLaBoite = boite.getContenu();
+                if (NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES - section.getAllProduits().size() > produitsDansLaBoite.size()){
+                    section.placerProduits(produitsDansLaBoite);
+                } else if (NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES - section.getAllProduits().size() == produitsDansLaBoite.size()) {
+                    section.placerProduits(produitsDansLaBoite);
+                    if (sections.size() < NOMBRE_DE_AIRE_DES_PRESENTOIRES_MAX){
+                        sections.add(new AiresDesPresentoires());
+                    }
+                } else {
+                    int nombreDePlaceRestantes;
+                    Iterator<AbstractProduit> iterator1 = produitsDansLaBoite.iterator();
+                    AbstractProduit[] tab = new AbstractProduit[produitsDansLaBoite.size()];
+                    int n = 0;
+                    while (iterator1.hasNext()){
+                        tab[n] = iterator1.next();
+                        n++;
+                    }
+                    for (int i = 0; i < tab.length; i++) {
+                        nombreDePlaceRestantes = NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES - section.getAllProduits().size();
+                        if (nombreDePlaceRestantes < NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES){
+                            section.placerProduits(List.of(tab[i]));
+                        } else {
+                            section.gereSurplus(List.of(tab[i]));
+                        }
+                    }
+
+                    /*while (iterator1.hasNext()){
+                        AbstractProduit product = iterator1.next();
+                        nombreDePlaceRestantes = NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES - section.getAllProduits().size();
+                        if (nombreDePlaceRestantes < NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES){
+                            section.placerProduits(List.of(product));
+                        } else {
+                            section.gereSurplus(List.of(product));
+                        }
+
+                    }
+
+                     */
+                    if (sections.size() < NOMBRE_DE_AIRE_DES_PRESENTOIRES_MAX){
+                        sections.add(new AiresDesPresentoires());
+                    }
+                    entrepot.retireBoite(boite);
+                }
+
+
+            }
+
         }
     }
 
