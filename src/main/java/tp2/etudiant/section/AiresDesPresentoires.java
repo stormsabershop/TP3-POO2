@@ -5,7 +5,7 @@ import tp2.etudiant.boite.Boite;
 
 import java.util.Collection;
 
-public class AiresDesPresentoires implements AireI {
+public class AiresDesPresentoires implements AireI, Lists {
     @Override
     public String decrit() {
         return "aire des presentoires";
@@ -41,6 +41,6 @@ public class AiresDesPresentoires implements AireI {
 
     @Override
     public void gereSurplus(Collection<AbstractProduit> restant) {
-
+        ((ChariteI) produitsListCharite).donneProduits(restant);
     }
 }

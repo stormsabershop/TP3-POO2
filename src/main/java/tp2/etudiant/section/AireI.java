@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public interface AireI extends Descriptible, Serializable {
-    Collection<AbstractProduit> produitsList = new ArrayList<>();
+
     Collection<AbstractProduit> retireProduits(Collection<AbstractProduit> items);
 
     Collection<AbstractProduit> getAllProduits();

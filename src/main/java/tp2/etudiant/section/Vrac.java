@@ -6,7 +6,7 @@ import tp2.etudiant.boite.Boite;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Vrac implements AireI{
+public class Vrac implements AireI, Lists{
 
     @Override
     public String decrit() {
@@ -15,34 +15,34 @@ public class Vrac implements AireI{
 
     @Override
     public Collection<AbstractProduit> retireProduits(Collection<AbstractProduit> items) {
-        produitsList.removeAll(items);
-        return produitsList;
+        produitsListVrac.removeAll(items);
+        return produitsListVrac;
     }
 
     @Override
     public Collection<AbstractProduit> getAllProduits() {
-        return produitsList;
+        return produitsListVrac;
     }
 
     @Override
     public Collection<AbstractProduit> placerProduits(Boite produits) {
-        produitsList.addAll(produits.getContenu());
-        return produitsList;
+        produitsListVrac.addAll(produits.getContenu());
+        return produitsListVrac;
     }
 
     @Override
     public boolean placerProduits(Collection<AbstractProduit> produits) {
-        return false;
+        return produitsListVrac.addAll(produits);
     }
 
     @Override
     public void viderAire() {
-        produitsList.clear();
+        produitsListVrac.clear();
 
     }
 
     @Override
     public void gereSurplus(Collection<AbstractProduit> restant) {
-
+        ((ChariteI) produitsListCharite).donneProduits(restant);
     }
 }

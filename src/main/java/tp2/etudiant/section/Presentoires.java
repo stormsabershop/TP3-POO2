@@ -18,7 +18,7 @@ public class Presentoires implements Descriptible {
     public String decrit() {
         if (produits.isEmpty()) {
             return toString();
-        } else return "Présentoires";
+        } else return "Présentoires: \n";
 
     }
 
