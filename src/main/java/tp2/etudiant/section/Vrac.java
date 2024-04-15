@@ -3,9 +3,11 @@ package tp2.etudiant.section;
 import tp2.application.AbstractProduit;
 import tp2.etudiant.boite.Boite;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class Vrac implements AireI{
+
     @Override
     public String decrit() {
         return "vrac ici";
@@ -13,17 +15,19 @@ public class Vrac implements AireI{
 
     @Override
     public Collection<AbstractProduit> retireProduits(Collection<AbstractProduit> items) {
-        return null;
+        produitsList.removeAll(items);
+        return produitsList;
     }
 
     @Override
     public Collection<AbstractProduit> getAllProduits() {
-        return null;
+        return produitsList;
     }
 
     @Override
     public Collection<AbstractProduit> placerProduits(Boite produits) {
-        return null;
+        produitsList.addAll(produits.getContenu());
+        return produitsList;
     }
 
     @Override
@@ -33,6 +37,7 @@ public class Vrac implements AireI{
 
     @Override
     public void viderAire() {
+        produitsList.clear();
 
     }
 

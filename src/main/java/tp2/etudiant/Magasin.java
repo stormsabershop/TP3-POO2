@@ -6,10 +6,7 @@ import tp2.echange.Modele;
 import tp2.etudiant.boite.Boite;
 import tp2.etudiant.client.Achat;
 import tp2.etudiant.client.Panier;
-import tp2.etudiant.section.AireI;
-import tp2.etudiant.section.Charite;
-import tp2.etudiant.section.Entrepot;
-import tp2.etudiant.section.Presentoires;
+import tp2.etudiant.section.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -26,14 +23,17 @@ public class Magasin implements Modele {
     private Entrepot entrepot; // modifier
     private Charite charite;
     private Collection<AireI> sections;
+    private AiresDesPresentoires airesDesPresentoires;
+    private Vrac vrac;
 
 
     public Magasin() {
         // Instanciez les attributs nécessaires
         this.panier = new Panier();
         this.entrepot = new Entrepot();
-        this.sections = new ArrayList<AireI>(List.of(new Presentoires()));
+        this.sections = new ArrayList<AireI>(List.of(new Vrac(), new AiresDesPresentoires()));
         this.charite = new Charite();
+        this.airesDesPresentoires = new AiresDesPresentoires();
 
     }
 
@@ -115,5 +115,11 @@ public class Magasin implements Modele {
     public Entrepot getEntrepot() {
         return entrepot;
     }
+//    public Vrac getVrac(){
+//        return vrac;
+//    }
+//    public AiresDesPresentoires getAiresDesPresentoires(){
+//        return airesDesPresentoires;
+//    }
 
 }
