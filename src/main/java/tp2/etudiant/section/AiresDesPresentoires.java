@@ -3,9 +3,17 @@ package tp2.etudiant.section;
 import tp2.application.AbstractProduit;
 import tp2.etudiant.boite.Boite;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class AiresDesPresentoires implements AireI, Lists {
+
+    Collection<AbstractProduit> produitsList;
+
+    public AiresDesPresentoires() {
+        this.produitsList = new ArrayList<>();
+    }
+
     @Override
     public String decrit() {
         return "aire des presentoires";

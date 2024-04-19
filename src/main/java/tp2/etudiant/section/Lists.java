@@ -7,7 +7,7 @@ import java.util.Collection;
 
 public interface Lists {
 
-    Collection<AbstractProduit> produitsList = new ArrayList<>();
+
     Collection<AbstractProduit> produitsListVrac = new ArrayList<>();
     Collection<AbstractProduit> produitsListCharite = new ArrayList<>();
 }

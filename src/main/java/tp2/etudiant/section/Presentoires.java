@@ -7,16 +7,14 @@ import tp2.etudiant.boite.Boite;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Presentoires implements Descriptible {
-    Collection<AbstractProduit> produits = new ArrayList<>();
+public class Presentoires extends AiresDesPresentoires implements Descriptible {
 
     public Presentoires() {
-        this.produits = produits;
     }
 
     @Override
     public String decrit() {
-        if (produits.isEmpty()) {
+        if (super.produitsList.isEmpty()) {
             return toString();
         } else return "Présentoires: \n";
 
