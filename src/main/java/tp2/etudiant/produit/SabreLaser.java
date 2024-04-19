@@ -1,12 +1,12 @@
 package tp2.etudiant.produit;
 import tp2.application.AbstractProduit;
-public class SabreLaser extends AbstractProduit implements Elite {
+public class SabreLaser extends AbstarctJouet implements Elite {
 
 	private boolean eliteOuNonElite;
 
-	public SabreLaser(String nom, boolean siElite,int prix) {
-		super(nom,prix);
-		this.eliteOuNonElite= siElite;
+	public SabreLaser(String nom, boolean siElite, int prix) {
+		super(nom, prix);
+		this.eliteOuNonElite = siElite;
 	}
 
 
