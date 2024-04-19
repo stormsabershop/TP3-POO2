@@ -71,59 +71,7 @@ public class Magasin implements Modele {
         return boitesNonPlacees;
     }
 
-    public void placerProduits2(Collection<Boite> boites, AireI section) {
-        Iterator<Boite> iterator = boites.iterator();
-        while (iterator.hasNext()) {
-            Boite boite = iterator.next();
-            if (section.getAllProduits().size() == 0) {
-                section.placerProduits(boite);
-                entrepot.retireBoite(boite);
-            } else if (section.getAllProduits().size() < NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES) {
-                List<AbstractProduit> produitsDansLaBoite = boite.getContenu();
-                int nombreDePlacesRestantes = NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES - section.getAllProduits().size();
-                if (nombreDePlacesRestantes >= produitsDansLaBoite.size()) {
-                    section.placerProduits(produitsDansLaBoite);
-                } else {
-                    List<AbstractProduit> produitsAPlacer = produitsDansLaBoite.subList(0, nombreDePlacesRestantes);
-                    section.placerProduits(produitsAPlacer);
-                    List<AbstractProduit> surplus = produitsDansLaBoite.subList(nombreDePlacesRestantes, produitsDansLaBoite.size());
-                    charite.donneProduits(surplus);
-                }
-                entrepot.retireBoite(boite);
-            } else {
-                charite.donneProduits(boite.getContenu());
-                entrepot.retireBoite(boite);
-            }
-        }
-    }
 
-    public void placerProduits1(Collection<Boite> boites, AireI section) {
-        Iterator<Boite> iterator = boites.iterator();
-        while (iterator.hasNext()) {
-            Boite boite = iterator.next();
-            if (section.getAllProduits().size() == 0) {
-                section.placerProduits(boite);
-                entrepot.retireBoite(boite);
-            } else if (section.getAllProduits().size() < NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES) {
-                List<AbstractProduit> produitsDansLaBoite = boite.getContenu();
-                int nombreDePlacesRestantes = NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES - section.getAllProduits().size();
-                if (nombreDePlacesRestantes >= produitsDansLaBoite.size()) {
-                    section.placerProduits(produitsDansLaBoite);
-                } else {
-                    List<AbstractProduit> produitsAPlacer = produitsDansLaBoite.subList(0, nombreDePlacesRestantes);
-                    section.placerProduits(produitsAPlacer);
-                    List<AbstractProduit> surplus = produitsDansLaBoite.subList(nombreDePlacesRestantes, produitsDansLaBoite.size());
-                    charite.donneProduits(surplus);
-                }
-
-                entrepot.retireBoite(boite);
-            } else {
-                charite.donneProduits(boite.getContenu());
-                entrepot.retireBoite(boite);
-
-            }
-        }
-    }
 
     public void placerProduits(Collection<Boite> boites, AireI section) {
         Iterator<Boite> iterator = boites.iterator();
