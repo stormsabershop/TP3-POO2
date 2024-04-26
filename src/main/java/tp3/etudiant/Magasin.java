@@ -6,7 +6,6 @@ import tp3.echange.Modele;
 import tp3.etudiant.boite.Boite;
 import tp3.etudiant.client.Achat;
 import tp3.etudiant.client.Panier;
-import tp2.etudiant.section.*;
 import tp3.etudiant.section.*;
 
 import java.time.LocalDateTime;
