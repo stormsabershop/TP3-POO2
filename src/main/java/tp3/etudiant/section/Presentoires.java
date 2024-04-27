@@ -9,7 +9,7 @@ public class Presentoires extends AiresDesPresentoires implements Descriptible {
 
     @Override
     public String decrit() {
-        if (super.produitsList.isEmpty()) {
+        if (super.contenuPresentoires.isEmpty()) {
             return toString();
         } else return "Présentoires: \n";
 

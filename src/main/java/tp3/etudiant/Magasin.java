@@ -21,7 +21,6 @@ public class Magasin implements Modele {
     private Charite charite;
     private Collection<AireI> sections;
     private AiresDesPresentoires airesDesPresentoires;
-    private Vrac vrac;
 
 
     public static final int NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES = 15;
@@ -76,7 +75,7 @@ public class Magasin implements Modele {
         Iterator<Boite> iterator = boites.iterator();
         while (iterator.hasNext()) {
             Boite boite = iterator.next();
-            if (section.getAllProduits().size() == 0) {
+            if (section.getAllProduits().isEmpty()) {
                 section.placerProduits(boite);
                 entrepot.retireBoite(boite);
             } else if (section.getAllProduits().size() < NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES) {
@@ -109,22 +108,6 @@ public class Magasin implements Modele {
             sections.add(new Presentoires());
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -166,11 +149,6 @@ public class Magasin implements Modele {
     public Entrepot getEntrepot() {
         return entrepot;
     }
-//    public Vrac getVrac(){
-//        return vrac;
-//    }
-//    public AiresDesPresentoires getAiresDesPresentoires(){
-//        return airesDesPresentoires;
-//    }
+
 
 }
