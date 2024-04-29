@@ -9,8 +9,7 @@ import javafx.scene.control.TableView;
 import tp3.echange.Descriptible;
 import tp3.etudiant.section.AireI;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SectionController {
 

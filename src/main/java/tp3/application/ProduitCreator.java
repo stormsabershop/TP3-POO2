@@ -87,10 +87,10 @@ public class ProduitCreator {
         Map<Class, Set<Class>> classMap = new HashMap<>();
 
         Set<Class> allProduitClasses = findAllClassesUsingClassLoader("tp3.etudiant.produit");
-        if (allProduitClasses.size() > 0) {
-            buildClassHierarchyMap(allProduitClasses, classMap);
-            ajouteTreeNodeRec(classMap, AbstractProduit.class, root);
-        }
+        buildClassHierarchyMap(allProduitClasses, classMap);
+
+        ajouteTreeNodeRec(classMap, AbstractProduit.class, root);
+
         return root;
     }
 
@@ -119,20 +119,14 @@ public class ProduitCreator {
     }
 
     private Set<Class> findAllClassesUsingClassLoader(String packageName) {
-        Set<Class> retSet = new HashSet<>();
         InputStream stream = ClassLoader.getSystemClassLoader()
                 .getResourceAsStream(packageName.replaceAll("[.]", "/"));
-        if (stream != null) {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
-            retSet = reader.lines()
-                    .filter(line -> line.endsWith(".class"))
-                    .map(line -> getClass(line, packageName))
-                    .filter(this::isAbstractProduit)
-                    .collect(Collectors.toSet());
-        }
-
-
-        return retSet;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+        return reader.lines()
+                .filter(line -> line.endsWith(".class"))
+                .map(line -> getClass(line, packageName))
+                .filter(this::isAbstractProduit)
+                .collect(Collectors.toSet());
     }
 
 

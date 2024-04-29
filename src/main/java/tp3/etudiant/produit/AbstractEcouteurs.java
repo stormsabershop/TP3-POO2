@@ -3,6 +3,7 @@ package tp3.etudiant.produit;
 import tp3.application.AbstractProduit;
 
 public abstract class AbstractEcouteurs extends AbstractProduit {
+
     public AbstractEcouteurs(String nom, int prix) {
         super(nom, prix);
     }
@@ -14,5 +15,6 @@ public abstract class AbstractEcouteurs extends AbstractProduit {
 
     @Override
     public abstract String decrit();
+
 
 }

@@ -25,8 +25,12 @@ public class Panier {
 
     public void vide() {
         Iterator<AbstractProduit> iterator = produits.iterator();
-        while (iterator.hasNext()){
+        if (iterator.hasNext()) {
             produits.remove(iterator.next());
+        } else {
+            for (int i = 0; i < produits.size(); i++) {
+                produits.remove(i);
+            }
         }
     }
 

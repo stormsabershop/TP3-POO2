@@ -3,11 +3,13 @@ package tp3.etudiant;
 import tp3.application.AbstractProduit;
 import tp3.echange.Descriptible;
 import tp3.echange.Modele;
+import tp3.echange.UI;
 import tp3.etudiant.boite.Boite;
 import tp3.etudiant.client.Achat;
 import tp3.etudiant.client.Panier;
 import tp3.etudiant.section.*;
 
+import java.io.File;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -110,14 +112,25 @@ public class Magasin implements Modele {
     }
 
 
-
     @Override
     public void mettreDansPanier(Collection<AbstractProduit> items) {
 
         Iterator<AbstractProduit> iterator = items.iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             panier.ajouteProduit(iterator.next());
         }
+
+    }
+
+    @Override
+    public Achat acheterPanier(String acheteur, LocalDateTime date, double rabaisGlobal) {
+        Achat achat = new Achat(acheteur, date, rabaisGlobal);
+        achats.add(achat);
+        panier.vide();
+        return achat;
+    }
+
+    public void viderPanier() {
 
     }
 
@@ -129,19 +142,42 @@ public class Magasin implements Modele {
     @Override
     public void retirerDuPanier(List<AbstractProduit> itemARetirer) {
         Iterator<AbstractProduit> iterator = itemARetirer.iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             panier.retireProduit(iterator.next());
         }
     }
 
-    public Achat acheterPanier(String achateur, LocalDateTime dateTime) {
-        Achat achat = new Achat(achateur, panier, dateTime);
-        achats.add(achat);
-        panier.vide();
-        return achat;
+    @Override
+    public Collection<Boite> getLivraisons() {
+        return null;
     }
 
     @Override
+    public void archive(File file) {
+
+    }
+
+    @Override
+    public void reconstruit(File file) {
+
+    }
+
+    @Override
+    public void viderMagasin() {
+
+    }
+
+    @Override
+    public String init(UI ui) {
+        return null;
+    }
+
+    @Override
+    public void stop() {
+
+    }
+
+
     public void init() {
 
     }

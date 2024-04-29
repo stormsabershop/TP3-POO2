@@ -1,36 +1,42 @@
 package tp3.application;
 
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import tp3.echange.UI;
+import tp3.etudiant.Magasin;
+import tp3.etudiant.client.Achat;
 import tp3.echange.Descriptible;
 import tp3.echange.Modele;
-import tp3.etudiant.Magasin;
 import tp3.etudiant.boite.Boite;
-import tp3.etudiant.client.Achat;
 import tp3.etudiant.section.AireI;
 import tp3.etudiant.section.Entrepot;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.lang.reflect.Modifier;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
-public class MagasinController {
+public class MagasinController implements UI {
 
 
+    public static final String NOM_CLIENT_DEFAUT = "Capitaine";
+    private String clientActuel = NOM_CLIENT_DEFAUT;
     private final ProduitCreator produitCreator = new ProduitCreator();
     private Modele modele = new Magasin();
     private SectionController sectionController = null;
+
 
     @FXML
     private TreeView<Class> produitCreatorTreeView;
@@ -77,15 +83,45 @@ public class MagasinController {
     @FXML
     private TableColumn<Boite, List<AbstractProduit>> contenuColumn;
 
+//    @FXML
+//    private TableView<Boite> livraisonTableView;
+
     @FXML
-    private TableView<Boite> livraisonTableView;
+    private Label rabaisLabel;
+
+    @FXML
+    private Slider rabaisSlider;
 
 
     @FXML
     private TextField nomClientTextField;
 
+
+    @FXML
+    private ComboBox<String> nomClientComboBox;
+
     @FXML
     private VBox produitGenerateurVBox;
+
+    @FXML
+    private TextArea aProposTextArea;
+
+    @FXML
+    void effacerCategorieSelectionnees(ActionEvent event) {
+        List<AbstractProduit> listAEffacer = new ArrayList<>(produitExistantCreationListView.getSelectionModel().getSelectedItems());
+        produitExistantCreationListView.getItems().removeAll(listAEffacer);
+        produitExistantCreationListView.refresh();
+        produitDisponibleListView.getItems().removeAll(listAEffacer);
+        produitDisponibleListView.refresh();
+    }
+
+    @FXML
+    void effacerToutesLesCategories(ActionEvent event) {
+        produitExistantCreationListView.getItems().clear();
+        produitExistantCreationListView.refresh();
+        produitDisponibleListView.getItems().clear();
+        produitDisponibleListView.refresh();
+    }
 
 
     @FXML
@@ -109,6 +145,8 @@ public class MagasinController {
             }
             metAJourEntrepot();
             metAJourSectionsTrees();
+            metAJourCharite();
+
         } else {
             alerte("Il faut sélectionner au moins un produit");
         }
@@ -148,11 +186,8 @@ public class MagasinController {
     @FXML
     void placerItemsDansSection(ActionEvent event) {
         ObservableList<Boite> selectedProduits = entrepotListView.getSelectionModel().getSelectedItems();
-        TreeItem<Descriptible> selectedSectionNode = rayonsSectionsTreeView.getSelectionModel().getSelectedItem();
-        Descriptible sectionVisee = null;
-        if (selectedSectionNode != null) {
-            sectionVisee = selectedSectionNode.getValue();
-        }
+        Descriptible sectionVisee = rayonsSectionsTreeView.getSelectionModel().getSelectedItem().getValue();
+
         if (selectedProduits.size() == 0 || sectionVisee == null) {
             alerte("Vous devez choisir une section et au moins un produit");
         } else {
@@ -162,6 +197,7 @@ public class MagasinController {
             metAJourCharite();
         }
     }
+
 
     @FXML
     void mettreDansPanier(ActionEvent event) {
@@ -208,18 +244,33 @@ public class MagasinController {
     @FXML
     void acheterPanier(ActionEvent event) {
         LocalDateTime dateTime = LocalDateTime.of(dateAchatPicker.getValue(), LocalTime.now());
-        Achat achat = modele.acheterPanier(nomClientTextField.getText(), dateTime);
+        Achat achat = modele.acheterPanier(nomClientTextField.getText(), dateTime, rabaisSlider.getValue());
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Achat confirmé");
 
-        if (achat != null) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Achat confirmé");
-            alert.showAndWait();
-            metAJourPanier();
-        }else{
-            alerte("Le panier est vide!");
+        alert.setContentText(achat.imprimeFacture());
+        alert.showAndWait();
+
+        metAJourPanier();
+//        metAJourLivraison();
+
+    }
+
+
+    @FXML
+    void selectionneClient(ActionEvent event) {
+        clientActuel = nomClientTextField.getText();
+        if (!nomClientComboBox.getItems().contains(clientActuel)) {
+            nomClientComboBox.getItems().add(clientActuel);
         }
+        nomClientComboBox.getSelectionModel().select(nomClientComboBox.getItems().indexOf(clientActuel));
 
+    }
 
+    @FXML
+    void selectionneClientAvecCombo(ActionEvent event) {
+        clientActuel = nomClientComboBox.getSelectionModel().getSelectedItem();
+        nomClientTextField.setText(clientActuel);
     }
 
 
@@ -233,17 +284,10 @@ public class MagasinController {
 
     @FXML
     void viderPanier(ActionEvent event) {
-//        List<AbstractProduit> itemARemettre = panierListView.getItems();
-//        Collection<AireI> toutesSections = modele.getAllSections();
-//        for (AireI section : toutesSections) {
-//            Boite boite = new Boite(-1, -1);
-//            boite.getContenu().addAll(itemARemettre.stream().filter(i -> i.getSectionActuelle().equals(section)).collect(Collectors.toList()));
-//            section.placerProduits(boite);
-//
-//        }
-//        modele.retirerDuPanier(itemARemettre);
-//        metAJourPanier();
-//        metAJourSectionsTrees();
+        modele.retirerDuPanier(panierListView.getItems());
+        metAJourPanier();
+        metAJourSectionsTrees();
+        metAJourCharite();
     }
 
 
@@ -252,6 +296,7 @@ public class MagasinController {
         dateAchatPicker.setValue(LocalDate.now());
 
         // Gérer les sélections multiples
+        produitExistantCreationListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         entrepotListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         produitDisponibleListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         rayonsAchatTreeView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -279,21 +324,21 @@ public class MagasinController {
         );
 
 
-        numberColumn.setCellValueFactory(
-                boite -> new ReadOnlyObjectWrapper<>(
-                        boite.getValue().getNumeroEmballage()));
-        contenuColumn.setCellValueFactory(
-                boite -> new ReadOnlyObjectWrapper<List<AbstractProduit>>(
-                        boite.getValue().getContenu()));
-        infosColumn.setCellValueFactory(
-                boiteItem -> {
-                    Boite boite = boiteItem.getValue();
-                    return new ReadOnlyObjectWrapper<String>(
-                            boite instanceof Descriptible ? boite.decrit() : boite.toString());
-                }
-        );
+//        numberColumn.setCellValueFactory(
+//                boite -> new ReadOnlyObjectWrapper<>(
+//                        boite.getValue().getNumeroEmballage()));
+//        contenuColumn.setCellValueFactory(
+//                boite -> new ReadOnlyObjectWrapper<List<AbstractProduit>>(
+//                        boite.getValue().getContenu()));
+//        infosColumn.setCellValueFactory(
+//                boiteItem -> {
+//                    Boite boite = boiteItem.getValue();
+//                    return new ReadOnlyObjectWrapper<String>(
+//                            boite instanceof Descriptible ? boite.decrit() : boite.toString());
+//                }
+//        );
 
-        contenuColumn.setCellFactory(this::loadContenuCell);
+//        contenuColumn.setCellFactory(this::loadContenuCell);
 
         entrepotListView.setCellFactory(c -> new BoiteListCell());
         produitDisponibleListView.setCellFactory(c -> new ProduitListCell());
@@ -310,9 +355,19 @@ public class MagasinController {
         rayonsAchatTreeView.setRoot(root);
 
         //On synchronise les 2 listes de porduits à commander
-        produitExistantCreationListView.setItems(produitDisponibleListView.getItems());
+        //produitExistantCreationListView.setItems(produitDisponibleListView.getItems());
 
-        modele.init();
+        // Client de base
+        nomClientComboBox.getItems().add(clientActuel);
+        nomClientTextField.setText(clientActuel);
+
+        //lier le rabais avec son slider
+        rabaisLabel.textProperty().bind(rabaisSlider.valueProperty().asString("%.0f %%"));
+
+
+        String aProposTexte = modele.init(this);
+        aProposTextArea.setWrapText(true);
+        aProposTextArea.setText(aProposTexte);
 
         metAJourSectionsTrees();
         metAJourEntrepot();
@@ -372,6 +427,7 @@ public class MagasinController {
                 if (produits != null) {
                     for (AbstractProduit produit : produits) {
                         TreeItem<Descriptible> produitItem = getProduitfor(sectionItem, produit);
+                        //sectionItem.getChildren().add(produitItem);
                     }
                 }
             }
@@ -380,18 +436,12 @@ public class MagasinController {
 
     private void metAJourCharite() {
         chariteTextArea.clear();
-        Descriptible charite = modele.getCharite();
-        if (charite != null) {
-            chariteTextArea.appendText(modele.getCharite().decrit());
-        }
+        chariteTextArea.appendText(modele.getCharite().decrit());
     }
 
     private void metAJourPanier() {
         panierListView.getItems().clear();
-        Collection<AbstractProduit> produits = modele.getContenuPanier();
-        if (produits != null) {
-            panierListView.getItems().addAll();
-        }
+        panierListView.getItems().addAll(modele.getContenuPanier());
     }
 
     private TreeItem<Descriptible> getProduitfor(TreeItem<Descriptible> sectionItem, AbstractProduit produit) {
@@ -423,38 +473,58 @@ public class MagasinController {
     }
 
 
+//    private void metAJourLivraison() {
+//        this.livraisonTableView.getItems().clear();
+//        Collection<Boite> livraisons = modele.getLivraisons();
+//        this.livraisonTableView.getItems().addAll(livraisons);
+//    }
+
+
     @FXML
     void creeNouveauProduit(ActionEvent event) {
 
-        TreeItem<Class> selectedTreeItem = produitCreatorTreeView.getSelectionModel().getSelectedItem();
-        if (selectedTreeItem != null) {
-            Class selectedClass = selectedTreeItem.getValue();
-
-            if (!Modifier.isAbstract(selectedClass.getModifiers())) {
-                AbstractProduit nouveauProduit = produitCreator.createNouveauProduit(selectedClass);
-                produitExistantCreationListView.getItems().add(nouveauProduit);
-
-            } else {
-                alerte("La catégorie choisie doit être celle d'un produit concrète");
-            }
+        Class selectedClass = produitCreatorTreeView.getSelectionModel().getSelectedItem().getValue();
+        if (!Modifier.isAbstract(selectedClass.getModifiers())) {
+            AbstractProduit nouveauProduit = produitCreator.createNouveauProduit(selectedClass);
+            produitExistantCreationListView.getItems().add(nouveauProduit);
+            produitDisponibleListView.getItems().add(nouveauProduit);
+            produitDisponibleListView.refresh();
+            produitExistantCreationListView.refresh();
         } else {
-            alerte("Vous devez choisir une catégorie de produit");
+            alerte("Vous devez choisir une catégorie de produit concrète");
         }
+
     }
 
     @FXML
     void reconstruitMagasin(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        File file = fileChooser.showOpenDialog(this.panierListView.getScene().getWindow());
+        if (file != null) {
+            modele.reconstruit(file);
 
+        }
+        metAJourEntrepot();
+        metAJourSectionsTrees();
+        metAJourCharite();
     }
 
     @FXML
     void archiveMagasin(ActionEvent event) {
-
+        FileChooser fileChooser = new FileChooser();
+        File file = fileChooser.showSaveDialog(this.panierListView.getScene().getWindow());
+        if (file != null) {
+            modele.archive(file);
+        }
     }
 
     @FXML
     void viderMagasin(ActionEvent event) {
-
+        modele.viderMagasin();
+        metAJourEntrepot();
+        metAJourSectionsTrees();
+        metAJourCharite();
+//        metAJourLivraison();
     }
 
     @FXML
@@ -474,6 +544,26 @@ public class MagasinController {
 
     public void setSectionController(SectionController sectionController) {
         this.sectionController = sectionController;
+    }
+
+
+    @Override
+    public List<AbstractProduit> getProduitsDisponibles() {
+        return new ArrayList<>(produitExistantCreationListView.getItems());
+    }
+
+    @Override
+    public void setProduitsDisponibles(List<AbstractProduit> produitsDisponibles) {
+        produitExistantCreationListView.setItems(FXCollections.observableList(produitsDisponibles));
+        produitDisponibleListView.setItems(FXCollections.observableList(produitsDisponibles));
+
+        // on ne doit pas oublier les compteur statiques
+
+
+    }
+
+    public void stop() {
+        modele.stop();
     }
 }
 
