@@ -58,13 +58,11 @@ public class Entrepot {
 
 
     public boolean entreposeBoite(Boite boite) {
-        int nbExec = 0;
         boolean retval = false;
         for (int i = 0; i < entreposage.length && retval == false; i++) {
             if (rangerLibre(i)) {
                 entreposage[i][0][0] = boite;
                 retval = true;
-                nbExec++;
             } else {
                 if (boite.getNumeroCategorie() == categorieRange(i)) {
                     for (int j = 0; j < entreposage[i].length && retval == false; j++) {
@@ -76,7 +74,6 @@ public class Entrepot {
                                 }
                                 entreposage[i][j][0] = boite;
                                 retval = true;
-                                nbExec++;
                             } else {
                                 return false;
                             }

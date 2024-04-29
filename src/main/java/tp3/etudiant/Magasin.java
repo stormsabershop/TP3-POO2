@@ -131,7 +131,7 @@ public class Magasin implements Modele {
     }
 
     public void viderPanier() {
-
+        panier.vide();
     }
 
     @Override
