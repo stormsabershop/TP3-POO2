@@ -118,4 +118,9 @@ public class Boite implements Descriptible, Serializable {
     public int hashCode() {
         return Objects.hash(numeroEmballage);
     }
+
+    public Boite(AbstractProduit produit) {
+        this.contenu = new ArrayList<>();
+        contenu.add(produit);
+    }
 }

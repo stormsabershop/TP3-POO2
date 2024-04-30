@@ -13,7 +13,7 @@ import java.io.File;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class Magasin implements Modele {
+public class Magasin implements Modele, Lists {
 
 
     private Collection<Achat> achats;
@@ -25,6 +25,7 @@ public class Magasin implements Modele {
     private AiresDesPresentoires airesDesPresentoires;
 
 
+
     public static final int NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES = 15;
     public static final int NOMBRE_DE_AIRE_DES_PRESENTOIRES_MAX = 6;
 
@@ -34,6 +35,7 @@ public class Magasin implements Modele {
         this.achats = new ArrayList<>();
         this.panier = new Panier();
         this.entrepot = new Entrepot();
+
         this.sections = new ArrayList<AireI>(List.of(new Vrac(), new Presentoires()));
         this.charite = new Charite();
         this.airesDesPresentoires = new AiresDesPresentoires();
@@ -115,11 +117,37 @@ public class Magasin implements Modele {
     @Override
     public void mettreDansPanier(Collection<AbstractProduit> items) {
 
-        Iterator<AbstractProduit> iterator = items.iterator();
-        while (iterator.hasNext()) {
-            panier.ajouteProduit(iterator.next());
+        for (AbstractProduit abstractProduit : items) {
+            panier.ajouteProduit(abstractProduit, provientDeAire(abstractProduit));
         }
 
+    }
+
+    public AireI provientDeAire(AbstractProduit produit) {
+        AireI aireTest = null;
+        for (AireI section : sections) {
+            if (section.estPresent(produit)) {
+                aireTest = section;
+            }
+        }
+        return aireTest;
+    }
+
+    @Override
+    public void retirerDuPanier(List<AbstractProduit> itemARetirer) {
+        Boite boite;
+
+        for (AbstractProduit item : itemARetirer) {
+            boite = new Boite(item);
+            Collection<Boite> boiteCollection = new ArrayList<>();
+            boiteCollection.add(boite);
+            for (AireI section : sections) {
+                if (provientDeAire(item) == section)
+                    placerProduits(boiteCollection, section);
+
+            }
+            panier.retireProduit(item);
+        }
     }
 
     @Override
@@ -139,13 +167,6 @@ public class Magasin implements Modele {
         return panier.getAchats();
     }
 
-    @Override
-    public void retirerDuPanier(List<AbstractProduit> itemARetirer) {
-        Iterator<AbstractProduit> iterator = itemARetirer.iterator();
-        while (iterator.hasNext()) {
-            panier.retireProduit(iterator.next());
-        }
-    }
 
     @Override
     public Collection<Boite> getLivraisons() {

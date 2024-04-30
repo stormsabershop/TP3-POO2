@@ -15,12 +15,15 @@ public interface AireI extends Descriptible, Serializable {
 
     //PLace tous les produits possibles. Retourne ceux qui n'ont pas pu être placés.
     Collection<AbstractProduit> placerProduits(Boite produits);
+
     boolean placerProduits(Collection<AbstractProduit> produits);
 
 
     void viderAire();
 
     void gereSurplus(Collection<AbstractProduit> restant);
+
+    public boolean estPresent(AbstractProduit produit);
 
 
 }

@@ -88,4 +88,15 @@ public class Vrac implements AireI, Lists{
     public void gereSurplus(Collection<AbstractProduit> restant) {
         ((ChariteI) produitsListCharite).donneProduits(restant);
     }
+
+    @Override
+    public boolean estPresent(AbstractProduit produit) {
+        boolean estla;
+        if (contenu.containsKey(produit.getNom())) {
+            estla = true;
+        } else {
+            estla = false;
+        }
+        return estla;
+    }
 }
