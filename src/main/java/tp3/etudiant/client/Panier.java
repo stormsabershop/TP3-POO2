@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Panier {
 
-    private List<AbstractProduit> produits;
+    private List<AbstractProduit> produits; // essaye d'utiliser la map et supprimer la lsist
     private Map<AbstractProduit, AireI> panierMap;
 
     public Panier() {
@@ -16,6 +16,7 @@ public class Panier {
     }
 
     public void ajouteProduit(AbstractProduit produit, AireI aireDuProduit) {
+        assert aireDuProduit !=null : "Aire d'origine st null";
         panierMap.putIfAbsent(produit, aireDuProduit);
 
         produits.add(produit);

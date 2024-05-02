@@ -115,10 +115,11 @@ public class Magasin implements Modele, Lists {
 
 
     @Override
-    public void mettreDansPanier(Collection<AbstractProduit> items) {
+    public void mettreDansPanier(Collection<AbstractProduit> items) { //a lire
 
         for (AbstractProduit abstractProduit : items) {
             panier.ajouteProduit(abstractProduit, provientDeAire(abstractProduit));
+
         }
 
     }
@@ -135,6 +136,7 @@ public class Magasin implements Modele, Lists {
 
     @Override
     public void retirerDuPanier(List<AbstractProduit> itemARetirer) {
+
         Boite boite;
 
         for (AbstractProduit item : itemARetirer) {
@@ -152,6 +154,7 @@ public class Magasin implements Modele, Lists {
 
     @Override
     public Achat acheterPanier(String acheteur, LocalDateTime date, double rabaisGlobal) {
+        assert panier!=null : "Panier ne doit pas etre null.";
         Achat achat = new Achat(acheteur, date, rabaisGlobal);
         achats.add(achat);
         panier.vide();
