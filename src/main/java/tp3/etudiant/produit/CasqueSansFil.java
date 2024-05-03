@@ -1,7 +1,7 @@
 package tp3.etudiant.produit;
 
 public class CasqueSansFil extends Casque {
-    public CasqueSansFil(String nom, int prix) {
+    public CasqueSansFil(String nom, double prix) {
         super(nom, prix);
     }
 

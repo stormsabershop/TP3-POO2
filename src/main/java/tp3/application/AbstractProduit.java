@@ -12,12 +12,12 @@ public abstract class AbstractProduit implements Descriptible, Cloneable, Serial
     private int numProduit; // associer au type de produit
 
     private LocalDateTime date = LocalDateTime.now();//la date de création
-    private int prix;
+    private double prix;
 
     private static int numSerieCompteur = 1;
     private static int numProduitCompteur =0;
 
-    public AbstractProduit(String nom, int prix) {
+    public AbstractProduit(String nom, double prix) {
         this.nom = nom;
         this.prix = prix;
         this.numProduit = numProduitCompteur++;
@@ -75,7 +75,7 @@ public abstract class AbstractProduit implements Descriptible, Cloneable, Serial
         return Objects.hashCode(numSerie);
     }
 
-    public int getPrix() {
+    public double getPrix() {
         return prix;
     }
 }

@@ -3,7 +3,7 @@ package tp3.etudiant.produit;
 public class Casque extends AbstractEcouteurs {
 
 
-    public Casque(String nom, int prix) {
+    public Casque(String nom, double prix) {
         super(nom, prix);
     }
 

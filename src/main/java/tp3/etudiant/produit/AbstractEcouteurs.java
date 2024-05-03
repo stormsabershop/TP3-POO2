@@ -4,7 +4,7 @@ import tp3.application.AbstractProduit;
 
 public abstract class AbstractEcouteurs extends AbstractProduit {
 
-    public AbstractEcouteurs(String nom, int prix) {
+    public AbstractEcouteurs(String nom, double prix) {
         super(nom, prix);
     }
 

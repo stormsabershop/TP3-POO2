@@ -3,7 +3,7 @@ package tp3.etudiant.produit;
 public class Figurine extends AbstarctJouet {
 
 
-    public Figurine(String nom, int prix) {
+    public Figurine(String nom, double prix) {
         super(nom, prix);
     }
 

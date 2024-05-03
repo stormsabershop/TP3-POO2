@@ -4,7 +4,7 @@ public class SabreLaser extends AbstarctJouet implements Elite {
 
     private boolean eliteOuNonElite;
 
-    public SabreLaser(String nom, boolean siElite, int prix) {
+    public SabreLaser(String nom, boolean siElite, double prix) {
         super(nom, prix);
         this.eliteOuNonElite = siElite;
     }
