@@ -10,7 +10,7 @@ import java.util.*;
 
 public class Achat implements Descriptible, Lists {
 
-
+/*
     private String acheteur;
     private final double MONTANT_TAXES = 0.14;
     private double montantRabais;
@@ -98,5 +98,88 @@ public class Achat implements Descriptible, Lists {
 
     public void setMontantRabais(double montantRabais) {
         this.montantRabais = montantRabais;
+    }
+
+ */
+
+    private String acheteur;
+    private int numFacturation;
+    private LocalDateTime momentAchat;
+    private List<AbstractProduit> produits;
+
+    // Constantes pour les taxes et rabais
+    private static final double TAUX_TAXES = 0.14;
+    private double montantRabaisGlobal;
+    private double montantRabaisProduits;
+    private double montantBrute;
+
+    public Achat(String acheteur, LocalDateTime momentAchat, double montantRabaisGlobal) {
+        this.acheteur = acheteur;
+        this.numFacturation = numFacturation;
+        this.momentAchat = momentAchat;
+        this.produits = produits;
+    }
+
+    public double calculCout() {
+        double coutTotal = 0;
+
+        // Calcul du coût de chaque produit
+        for (AbstractProduit produit : produits) {
+            coutTotal += produit.getPrix();
+        }
+
+        // Application du rabais global
+        coutTotal -= montantRabaisGlobal;
+
+        // Application du rabais sur les produits
+        coutTotal -= montantRabaisProduits;
+
+        // Ajout des taxes
+        coutTotal *= (1 + TAUX_TAXES);
+
+        return coutTotal;
+    }
+
+    // Méthode pour calculer le montant des rabais sur les produits
+    public void calculRabaisProduits() {
+        // Implémentez ici le calcul des rabais sur les produits selon les spécifications fournies
+    }
+
+    // Autres getters et setters
+    public String getAcheteur() {
+        return acheteur;
+    }
+
+    public void setAcheteur(String acheteur) {
+        this.acheteur = acheteur;
+    }
+
+    public int getNumFacturation() {
+        return numFacturation;
+    }
+
+    public void setNumFacturation(int numFacturation) {
+        this.numFacturation = numFacturation;
+    }
+
+    public LocalDateTime getMomentAchat() {
+        return momentAchat;
+    }
+
+    public void setMomentAchat(LocalDateTime momentAchat) {
+        this.momentAchat = momentAchat;
+    }
+
+    public List<AbstractProduit> getProduits() {
+        return produits;
+    }
+
+    public void setProduits(List<AbstractProduit> produits) {
+        this.produits = produits;
+    }
+
+    @Override
+    public String decrit() {
+        return null;
     }
 }
