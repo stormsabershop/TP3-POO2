@@ -156,6 +156,10 @@ public class Magasin implements Modele, Lists {
     public Achat acheterPanier(String acheteur, LocalDateTime date, double rabaisGlobal) {
         assert panier!=null : "Panier ne doit pas etre null.";
         Achat achat = new Achat(acheteur, date, rabaisGlobal);
+        Collection<AbstractProduit> produits = getContenuPanier();
+        achat.setProduits(produits);
+        achat.calculerMontantBrut();
+        achat.calculerContient();
         achats.add(achat);
         panier.vide();
         return achat;

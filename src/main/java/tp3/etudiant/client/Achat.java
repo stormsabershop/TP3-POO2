@@ -27,6 +27,7 @@ public class Achat implements Descriptible, Lists {
         this.acheteur = acheteurs;
         this.momentAchat = momentAchat;
         this.montantRabais = montantRabais;
+        compteurFacture = 0;
 
     }
 
@@ -103,9 +104,9 @@ public class Achat implements Descriptible, Lists {
  */
 
     private String acheteur;
-    private int numFacturation;
+    private int contient;
     private LocalDateTime momentAchat;
-    private List<AbstractProduit> produits;
+    private Collection<AbstractProduit> produits;
 
     // Constantes pour les taxes et rabais
     private static final double TAUX_TAXES = 0.14;
@@ -115,29 +116,34 @@ public class Achat implements Descriptible, Lists {
 
     public Achat(String acheteur, LocalDateTime momentAchat, double montantRabaisGlobal) {
         this.acheteur = acheteur;
-        this.numFacturation = numFacturation;
+        this.contient = 0;
         this.momentAchat = momentAchat;
-        this.produits = produits;
+        this.produits = null;
+        this.montantRabaisGlobal = montantRabaisGlobal;
     }
 
     public double calculCout() {
         double coutTotal = 0;
-
-        // Calcul du coût de chaque produit
         for (AbstractProduit produit : produits) {
             coutTotal += produit.getPrix();
         }
 
-        // Application du rabais global
-        coutTotal -= montantRabaisGlobal;
+        coutTotal -= (montantRabaisGlobal * coutTotal);
 
-        // Application du rabais sur les produits
         coutTotal -= montantRabaisProduits;
 
-        // Ajout des taxes
         coutTotal *= (1 + TAUX_TAXES);
 
         return coutTotal;
+    }
+
+
+    public double calculerMontantBrut(){
+        montantBrute = 0;
+        for (AbstractProduit produit : produits) {
+            montantBrute += produit.getPrix();
+        }
+        return montantBrute;
     }
 
     // Méthode pour calculer le montant des rabais sur les produits
@@ -154,12 +160,9 @@ public class Achat implements Descriptible, Lists {
         this.acheteur = acheteur;
     }
 
-    public int getNumFacturation() {
-        return numFacturation;
-    }
-
-    public void setNumFacturation(int numFacturation) {
-        this.numFacturation = numFacturation;
+    public int calculerContient(){
+        contient = produits.size();
+        return contient;
     }
 
     public LocalDateTime getMomentAchat() {
@@ -170,16 +173,23 @@ public class Achat implements Descriptible, Lists {
         this.momentAchat = momentAchat;
     }
 
-    public List<AbstractProduit> getProduits() {
+    public Collection<AbstractProduit> getProduits() {
         return produits;
     }
 
-    public void setProduits(List<AbstractProduit> produits) {
+    public void setProduits(Collection<AbstractProduit> produits) {
         this.produits = produits;
     }
 
+    public String imprimeFacture() {
+        return "Facturé à :" + getAcheteur() + "\n"
+                + "Facturé le :" + getMomentAchat() + "\n"
+                + "\n" + "Contient :" + contient
+                + "\n" + "Côut brute :" + montantBrute
+                + "\n" + "Côut final :" + calculCout();
+    }
     @Override
     public String decrit() {
-        return null;
+        return " salut je suis decrit";
     }
 }
