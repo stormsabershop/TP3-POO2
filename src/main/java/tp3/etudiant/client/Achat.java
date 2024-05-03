@@ -114,6 +114,8 @@ public class Achat implements Descriptible, Lists {
     private double montantRabaisProduits;
     private double montantBrute;
 
+    private double rabais;
+
     public Achat(String acheteur, LocalDateTime momentAchat, double montantRabaisGlobal) {
         this.acheteur = acheteur;
         this.contient = 0;
@@ -127,12 +129,6 @@ public class Achat implements Descriptible, Lists {
         for (AbstractProduit produit : produits) {
             coutTotal += produit.getPrix();
         }
-
-        coutTotal -= (montantRabaisGlobal * coutTotal);
-
-        coutTotal -= montantRabaisProduits;
-
-        coutTotal *= (1 + TAUX_TAXES);
 
         return coutTotal;
     }
@@ -187,6 +183,17 @@ public class Achat implements Descriptible, Lists {
                 + "\n" + "Contient :" + contient
                 + "\n" + "Côut brute :" + montantBrute
                 + "\n" + "Côut final :" + calculCout();
+    }
+
+    public double calculerToutLesRabais(){
+        rabais = 0;
+        double cout = 0;
+        for (AbstractProduit produit: produits) {
+            cout += produit.getPrix();
+        }
+        cout -= (montantRabaisGlobal * cout) / 100;
+
+        return rabais;
     }
     @Override
     public String decrit() {
