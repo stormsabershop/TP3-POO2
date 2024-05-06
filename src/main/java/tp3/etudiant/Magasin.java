@@ -13,7 +13,7 @@ import java.io.File;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class Magasin implements Modele, Lists {
+public class Magasin implements Modele, Lists, VracNBproduits {
 
 
     private Collection<Achat> achats;
@@ -24,10 +24,15 @@ public class Magasin implements Modele, Lists {
     private Collection<AireI> sections;
     private AiresDesPresentoires airesDesPresentoires;
 
+    private int nombreProduitsAvantPanier;
+    private int nombreProduitsApresPanier;
+
 
 
     public static final int NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES = 15;
     public static final int NOMBRE_DE_AIRE_DES_PRESENTOIRES_MAX = 6;
+
+    private Vrac vrac;
 
 
     public Magasin() {
@@ -35,10 +40,12 @@ public class Magasin implements Modele, Lists {
         this.achats = new ArrayList<>();
         this.panier = new Panier();
         this.entrepot = new Entrepot();
-
-        this.sections = new ArrayList<AireI>(List.of(new Vrac(), new Presentoires()));
+        this.vrac = new Vrac();
+        this.sections = new ArrayList<AireI>(List.of(vrac, new Presentoires()));
         this.charite = new Charite();
         this.airesDesPresentoires = new AiresDesPresentoires();
+        this.nombreProduitsAvantPanier = 0;
+        this.nombreProduitsApresPanier = 0;
 
     }
 
@@ -116,12 +123,17 @@ public class Magasin implements Modele, Lists {
 
     @Override
     public void mettreDansPanier(Collection<AbstractProduit> items) { //a lire
-
+        if (vrac.getAllProduits().size() > nombreProduitsAvantPanier) {
+            nombreProduitsAvantPanier = vrac.getAllProduits().size();
+        }
+        int nombreDeProduitsAjoutesDansLePanier = 0;
         for (AbstractProduit abstractProduit : items) {
             panier.ajouteProduit(abstractProduit, provientDeAire(abstractProduit));
-
+            if (provientDeAire(abstractProduit) == vrac){
+                nombreDeProduitsAjoutesDansLePanier++;
+            }
         }
-
+        nombreProduitsApresPanier = vrac.getAllProduits().size() - nombreDeProduitsAjoutesDansLePanier;
     }
 
     public AireI provientDeAire(AbstractProduit produit) {
@@ -158,6 +170,8 @@ public class Magasin implements Modele, Lists {
         Achat achat = new Achat(acheteur, date, rabaisGlobal);
         Collection<AbstractProduit> produits = getContenuPanier();
         achat.setProduits(produits);
+        achat.setNombreProduitsAvantPanier(nombreProduitsAvantPanier);
+        achat.setNombreProduitsApresPanier(nombreProduitsApresPanier);
         achat.calculerMontantBrut();
         achat.calculCout();
         achat.calculerContient();
@@ -215,5 +229,67 @@ public class Magasin implements Modele, Lists {
         return entrepot;
     }
 
+    public Collection<Achat> getAchats() {
+        return achats;
+    }
 
+    public void setAchats(Collection<Achat> achats) {
+        this.achats = achats;
+    }
+
+    public Panier getPanier() {
+        return panier;
+    }
+
+    public void setPanier(Panier panier) {
+        this.panier = panier;
+    }
+
+    public void setEntrepot(Entrepot entrepot) {
+        this.entrepot = entrepot;
+    }
+
+    public void setCharite(Charite charite) {
+        this.charite = charite;
+    }
+
+    public Collection<AireI> getSections() {
+        return sections;
+    }
+
+    public void setSections(Collection<AireI> sections) {
+        this.sections = sections;
+    }
+
+    public AiresDesPresentoires getAiresDesPresentoires() {
+        return airesDesPresentoires;
+    }
+
+    public void setAiresDesPresentoires(AiresDesPresentoires airesDesPresentoires) {
+        this.airesDesPresentoires = airesDesPresentoires;
+    }
+
+    public int getNombreProduitsAvantPanier() {
+        return nombreProduitsAvantPanier;
+    }
+
+    public void setNombreProduitsAvantPanier(int nombreProduitsAvantPanier) {
+        this.nombreProduitsAvantPanier = nombreProduitsAvantPanier;
+    }
+
+    public int getNombreProduitsApresPanier() {
+        return nombreProduitsApresPanier;
+    }
+
+    public void setNombreProduitsApresPanier(int nombreProduitsApresPanier) {
+        this.nombreProduitsApresPanier = nombreProduitsApresPanier;
+    }
+
+    public Vrac getVrac() {
+        return vrac;
+    }
+
+    public void setVrac(Vrac vrac) {
+        this.vrac = vrac;
+    }
 }

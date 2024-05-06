@@ -2,9 +2,12 @@ package tp3.etudiant.client;
 
 import tp3.echange.Descriptible;
 import tp3.application.AbstractProduit;
+import tp3.etudiant.Magasin;
 import tp3.etudiant.produit.Figurine;
 import tp3.etudiant.produit.SabreLaser;
+import tp3.etudiant.section.AireI;
 import tp3.etudiant.section.Lists;
+import tp3.etudiant.section.Vrac;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -112,13 +115,19 @@ public class Achat implements Descriptible, Lists {
 
     // Constantes pour les taxes et rabais
     private static final double TAUX_TAXES = 0.14;
+    private static final double RABAIS_VRAC_MAXIMAL = 20;
     private double montantRabaisGlobal;
     private double montantRabaisProduits;
     private double montantBrute;
 
     private double rabais;
+    private double rabaisVrac;
 
     private double coutFinal;
+
+
+    private int nombreProduitsAvantPanier;
+    private int nombreProduitsApresPanier;
 
     public Achat(String acheteur, LocalDateTime momentAchat, double montantRabaisGlobal) {
         this.acheteur = acheteur;
@@ -130,11 +139,13 @@ public class Achat implements Descriptible, Lists {
     }
 
     public double calculCout() {
+        boolean isVrac = false;
         coutFinal = 0;
         for (AbstractProduit produit : produits) {
             coutFinal += produit.getPrix();
         }
         coutFinal -= calculerToutLesRabais();
+        coutFinal -= calculerRabaisVrac(coutFinal);
         return coutFinal;
     }
 
@@ -187,7 +198,8 @@ public class Achat implements Descriptible, Lists {
                 + "Facturé le :" + getMomentAchat() + "\n"
                 + "\n" + "Contient :" + contient
                 + "\n" + "Côut brute :" + montantBrute
-                + "\n" + "Rabais : -" + rabais
+                + "\n" + "Rabais : - " + rabais
+                + "\n" + "Rabais Vrac : - " + rabaisVrac
                 + "\n" + "Côut final :" + coutFinal;
     }
 
@@ -202,12 +214,41 @@ public class Achat implements Descriptible, Lists {
                 rabais += ((15 * produit.getPrix()) / 100);
             }
         }
-
-
         return rabais;
+    }
+
+    public double calculerRabaisVrac(double prixTotal){
+
+        double fractionVolumeAchete = (double) nombreProduitsApresPanier / nombreProduitsAvantPanier;
+        double rabaisDuVrac = RABAIS_VRAC_MAXIMAL * fractionVolumeAchete * prixTotal / 100;
+        if (fractionVolumeAchete == 1.0){
+            rabaisDuVrac = 0;
+        }
+        rabaisVrac = rabaisDuVrac;
+        return rabaisDuVrac;
+    }
+
+    public double calculerRabaisPresentoire(){
+        return -1;
     }
     @Override
     public String decrit() {
         return " salut je suis decrit";
+    }
+
+    public int getNombreProduitsAvantPanier() {
+        return nombreProduitsAvantPanier;
+    }
+
+    public void setNombreProduitsAvantPanier(int nombreProduitsAvantPanier) {
+        this.nombreProduitsAvantPanier = nombreProduitsAvantPanier;
+    }
+
+    public int getNombreProduitsApresPanier() {
+        return nombreProduitsApresPanier;
+    }
+
+    public void setNombreProduitsApresPanier(int nombreProduitsApresPanier) {
+        this.nombreProduitsApresPanier = nombreProduitsApresPanier;
     }
 }

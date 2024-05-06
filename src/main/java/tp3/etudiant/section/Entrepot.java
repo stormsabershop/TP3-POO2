@@ -3,6 +3,8 @@ package tp3.etudiant.section;
 
 import tp3.etudiant.boite.Boite;
 
+import java.util.Arrays;
+
 public class Entrepot {
     public static final int NOMBRE_SECTION = 5;
     public static final int NOMBRE_TABLETTE = 5;
