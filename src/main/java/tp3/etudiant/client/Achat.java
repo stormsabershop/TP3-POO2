@@ -2,6 +2,8 @@ package tp3.etudiant.client;
 
 import tp3.echange.Descriptible;
 import tp3.application.AbstractProduit;
+import tp3.etudiant.produit.Figurine;
+import tp3.etudiant.produit.SabreLaser;
 import tp3.etudiant.section.Lists;
 
 import java.time.LocalDateTime;
@@ -116,21 +118,24 @@ public class Achat implements Descriptible, Lists {
 
     private double rabais;
 
+    private double coutFinal;
+
     public Achat(String acheteur, LocalDateTime momentAchat, double montantRabaisGlobal) {
         this.acheteur = acheteur;
         this.contient = 0;
         this.momentAchat = momentAchat;
         this.produits = null;
         this.montantRabaisGlobal = montantRabaisGlobal;
+        this.coutFinal = 0;
     }
 
     public double calculCout() {
-        double coutTotal = 0;
+        coutFinal = 0;
         for (AbstractProduit produit : produits) {
-            coutTotal += produit.getPrix();
+            coutFinal += produit.getPrix();
         }
-
-        return coutTotal;
+        coutFinal -= calculerToutLesRabais();
+        return coutFinal;
     }
 
 
@@ -182,16 +187,22 @@ public class Achat implements Descriptible, Lists {
                 + "Facturé le :" + getMomentAchat() + "\n"
                 + "\n" + "Contient :" + contient
                 + "\n" + "Côut brute :" + montantBrute
-                + "\n" + "Côut final :" + calculCout();
+                + "\n" + "Rabais : -" + rabais
+                + "\n" + "Côut final :" + coutFinal;
     }
 
     public double calculerToutLesRabais(){
         rabais = 0;
-        double cout = 0;
+        double cout = montantBrute;
+        cout -= ((int) montantRabaisGlobal * cout) / 100;
+        rabais = montantBrute - cout;
+
         for (AbstractProduit produit: produits) {
-            cout += produit.getPrix();
+            if (produit.getClass() == SabreLaser.class || produit.getClass() == Figurine.class){
+                rabais += ((15 * produit.getPrix()) / 100);
+            }
         }
-        cout -= (montantRabaisGlobal * cout) / 100;
+
 
         return rabais;
     }

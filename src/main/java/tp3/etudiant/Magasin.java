@@ -159,6 +159,7 @@ public class Magasin implements Modele, Lists {
         Collection<AbstractProduit> produits = getContenuPanier();
         achat.setProduits(produits);
         achat.calculerMontantBrut();
+        achat.calculCout();
         achat.calculerContient();
         achats.add(achat);
         panier.vide();
