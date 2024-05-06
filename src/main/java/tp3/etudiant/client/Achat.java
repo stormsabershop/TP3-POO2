@@ -157,13 +157,6 @@ public class Achat implements Descriptible, Lists {
         }
         return montantBrute;
     }
-
-    // Méthode pour calculer le montant des rabais sur les produits
-    public void calculRabaisProduits() {
-        // Implémentez ici le calcul des rabais sur les produits selon les spécifications fournies
-    }
-
-    // Autres getters et setters
     public String getAcheteur() {
         return acheteur;
     }
