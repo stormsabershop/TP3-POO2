@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Historique {
 
-    File historique = new File("tp3/etudiant/fichiers/historique/Historique.txt");
+    File historique = new File("tp3/etudiant/historique/historique.txt");
     FileWriter writer = null;
     BufferedWriter bw = null;
 
@@ -18,7 +18,8 @@ public class Historique {
             try {
                 historique.createNewFile();
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("Chemin non valide");
+                ;
             }
         } else {
             try {
