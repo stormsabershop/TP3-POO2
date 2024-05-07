@@ -1,5 +1,6 @@
 package tp3.etudiant;
 
+import tp3.etudiant.fichiers.Historique;
 import tp3.application.AbstractProduit;
 import tp3.echange.Descriptible;
 import tp3.echange.Modele;
@@ -26,6 +27,7 @@ public class Magasin implements Modele, Lists, VracNBproduits {
 
     private int nombreProduitsAvantPanier;
     private int nombreProduitsApresPanier;
+    private Historique historique = new Historique();
 
 
 
@@ -70,7 +72,7 @@ public class Magasin implements Modele, Lists, VracNBproduits {
         // Parcours de chaque boîte de la commande
         for (Boite boite : commande) {
             boolean placee = entrepot.entreposeBoite(boite);
-
+            historique.ajouterEvenement("Commande d’un ou plusieurs produits");
 
             if (!placee) {
                 boitesNonPlacees++;
@@ -89,11 +91,13 @@ public class Magasin implements Modele, Lists, VracNBproduits {
             if (section.getAllProduits().isEmpty()) {
                 section.placerProduits(boite);
                 entrepot.retireBoite(boite);
+                historique.ajouterEvenement("Transfert de produits dans une section");
             } else if (section.getAllProduits().size() < NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES) {
                 List<AbstractProduit> produitsDansLaBoite = boite.getContenu();
                 int nombreDePlacesRestantes = NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES - section.getAllProduits().size();
                 if (nombreDePlacesRestantes >= produitsDansLaBoite.size()) {
                     section.placerProduits(produitsDansLaBoite);
+                    historique.ajouterEvenement("Transfert de produits dans une section");
                 } else {
                     List<AbstractProduit> produitsAPlacer = new ArrayList<>();
                     List<AbstractProduit> surplus = new ArrayList<>();
@@ -129,6 +133,7 @@ public class Magasin implements Modele, Lists, VracNBproduits {
         int nombreDeProduitsAjoutesDansLePanier = 0;
         for (AbstractProduit abstractProduit : items) {
             panier.ajouteProduit(abstractProduit, provientDeAire(abstractProduit));
+            historique.ajouterEvenement("Transfert de produits dans le panier");
             if (provientDeAire(abstractProduit) == vrac){
                 nombreDeProduitsAjoutesDansLePanier++;
             }
@@ -158,6 +163,7 @@ public class Magasin implements Modele, Lists, VracNBproduits {
             for (AireI section : sections) {
                 if (provientDeAire(item) == section)
                     placerProduits(boiteCollection, section);
+                historique.ajouterEvenement("Transfert de produits dans une section");
 
             }
             panier.retireProduit(item);
@@ -176,6 +182,7 @@ public class Magasin implements Modele, Lists, VracNBproduits {
         achat.calculCout();
         achat.calculerContient();
         achats.add(achat);
+        historique.ajouterEvenement("Achat d'un produits");
         panier.vide();
         return achat;
     }

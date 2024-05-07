@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import tp3.etudiant.fichiers.Historique;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -20,6 +21,7 @@ public class ProduitCreator {
     private static int lastNumber = 0;
 
     private static int nomCompteur = 0;
+    private Historique historique = new Historique();
 
     public ProduitCreator() {
     }
@@ -44,9 +46,11 @@ public class ProduitCreator {
         Object[] parametersValues = convertStringsToValues(
                 parameters,
                 demandeValeursUtilisateur(parameters, classeRequise.getSimpleName()));
+        historique.ajouterEvenement("Ouverture de l’application");
 
         try {
             retProduit = (AbstractProduit) constructor.newInstance(parametersValues);
+            historique.ajouterEvenement("Ouverture de l’application");
 
         } catch (InstantiationException e) {
             throw new RuntimeException(e);

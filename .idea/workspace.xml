@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c2081649-cf75-47ae-9426-428499fe3a0b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/fichiers/Historique.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/application/MagasinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/application/MagasinController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/application/ProduitCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/application/ProduitCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/Magasin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/Magasin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/VracNBproduits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/section/VracNBproduits.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/CasqueSansFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/CasqueSansFil.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2g977f0l8xqiA0YNHbp1ugaFKMH" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/2341895/Download/TP3-POO2/working",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\2341895\Download\TP3-POO2\working\tp3\etudiant\fichiers\historique" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="tp3" />
+      <recent name="tp3.application" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="tp3.Historique" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="MagasinApplication" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="tp3.application.MagasinApplication" />
+      <module name="magasin" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/working" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c2081649-cf75-47ae-9426-428499fe3a0b" name="Changes" comment="" />
+      <created>1715097773464</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715097773464</updated>
+      <workItem from="1715097774649" duration="938000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

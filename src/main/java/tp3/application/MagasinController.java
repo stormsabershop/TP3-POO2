@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+import tp3.etudiant.fichiers.Historique;
 import tp3.echange.UI;
 import tp3.etudiant.Magasin;
 import tp3.etudiant.client.Achat;
@@ -18,9 +19,6 @@ import tp3.etudiant.section.AireI;
 import tp3.etudiant.section.Entrepot;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.lang.reflect.Modifier;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -36,6 +34,7 @@ public class MagasinController implements UI {
     private final ProduitCreator produitCreator = new ProduitCreator();
     private Modele modele = new Magasin();
     private SectionController sectionController = null;
+    private Historique historique = new Historique();
 
 
     @FXML
@@ -564,6 +563,7 @@ public class MagasinController implements UI {
 
     public void stop() {
         modele.stop();
+        historique.ajouterEvenement("Fermeture de l’application");
     }
 }
 

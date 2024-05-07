@@ -1,4 +1,4 @@
-package tp3.etudiant;
+package tp3.etudiant.section;
 
 public interface VracNBproduits {
     int getNombreProduitsAvantPanier();

@@ -1,8 +1,8 @@
 package tp3.etudiant.produit;
 
 public class CasqueSansFil extends Casque {
-    public CasqueSansFil(String nom, double prix) {
-        super(nom, prix);
+    public CasqueSansFil(String nom, double prix, boolean estStrereo) {
+        super(nom, prix, estStrereo);
     }
 
     @Override
