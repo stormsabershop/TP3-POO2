@@ -39,6 +39,7 @@ public class Magasin implements Modele, Lists, VracNBproduits {
 
     public Magasin() {
         // Instanciez les attributs nécessaires
+        historique.ajouterEvenement("Ouverture de l’application");
         this.achats = new ArrayList<>();
         this.panier = new Panier();
         this.entrepot = new Entrepot();
@@ -224,7 +225,7 @@ public class Magasin implements Modele, Lists, VracNBproduits {
 
     @Override
     public void stop() {
-
+        historique.ajouterEvenement("Fermeture de l’application");
     }
 
 

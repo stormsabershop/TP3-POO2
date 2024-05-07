@@ -563,7 +563,6 @@ public class MagasinController implements UI {
 
     public void stop() {
         modele.stop();
-        historique.ajouterEvenement("Fermeture de l’application");
     }
 }
 

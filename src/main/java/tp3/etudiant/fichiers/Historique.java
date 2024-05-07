@@ -33,7 +33,6 @@ public class Historique {
                 writer.close();
             } catch (IOException e) {
                 System.out.println("Impossible d'acceder au ficheir");
-                ;
             }
         }
     }

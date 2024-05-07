@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2081649-cf75-47ae-9426-428499fe3a0b" name="Changes" comment="">
+    <list default="true" id="c2081649-cf75-47ae-9426-428499fe3a0b" name="Changes" comment="Creation de l'HISTORIQUE (modif)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/application/MagasinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/application/MagasinController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/application/ProduitCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/application/ProduitCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/Magasin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/Magasin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/fichiers/Historique.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/fichiers/Historique.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/working/tp3/etudiant/historique/historique.txt" beforeDir="false" afterPath="$PROJECT_DIR$/working/tp3/etudiant/historique/historique.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,7 +18,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Boubou TAmboura &lt;(2341895@cegeplimoilou.ca)&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
   <component name="ProjectId" id="2g977f0l8xqiA0YNHbp1ugaFKMH" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -67,8 +77,16 @@
       <option name="presentableId" value="Default" />
       <updated>1715097773464</updated>
       <workItem from="1715097774649" duration="938000" />
-      <workItem from="1715102372492" duration="327000" />
+      <workItem from="1715102372492" duration="2049000" />
     </task>
+    <task id="LOCAL-00001" summary="Creation de l'HISTORIQUE (modif)">
+      <created>1715103004266</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715103004266</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -84,5 +102,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Creation de l'HISTORIQUE (modif)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creation de l'HISTORIQUE (modif)" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
