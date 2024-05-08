@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Historique {
 
-    File historique = new File("tp3/etudiant/historique/historique.txt");
+    File historique = new File("tp3/etudiant/fichiers/historique/historique.txt");
     FileWriter writer = null;
     BufferedWriter bw = null;
 

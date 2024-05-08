@@ -1,15 +1,1 @@
-08-05-24 : 12:43:37:79 -> Ouverture de l’application
-08-05-24 : 12:43:37:80 -> Ouverture de l’application
-08-05-24 : 12:43:44:14 -> Commande d’un ou plusieurs produits
-08-05-24 : 12:43:44:14 -> Commande d’un ou plusieurs produits
-08-05-24 : 12:43:44:14 -> Commande d’un ou plusieurs produits
-08-05-24 : 12:43:48:27 -> Transfert de produits dans une section
-08-05-24 : 12:43:53:68 -> Transfert de produits dans le panier
-08-05-24 : 12:43:53:69 -> Transfert de produits dans le panier
-08-05-24 : 12:43:53:69 -> Transfert de produits dans le panier
-08-05-24 : 12:44:02:00 -> Transfert de produits dans une section
-08-05-24 : 12:44:02:00 -> Transfert de produits dans une section
-08-05-24 : 12:44:02:01 -> Transfert de produits dans une section
-08-05-24 : 12:44:03:43 -> Achat d'un produits
-08-05-24 : 12:44:07:05 -> Enregistrement du contenu du magasin
-08-05-24 : 12:44:07:06 -> Fermeture de l’application
+
