@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2081649-cf75-47ae-9426-428499fe3a0b" name="Changes" comment="Cretion de L'historique">
-      <changelist_data name="Boubou TAmboura" email="(2341895@cegeplimoilou.ca)" />
+    <list default="true" id="c2081649-cf75-47ae-9426-428499fe3a0b" name="Changes" comment="Enregistrement produits Magain">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/application/AbstractProduit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/application/AbstractProduit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/Magasin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/Magasin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/AbstarctJouet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/AbstarctJouet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/Casque.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/Casque.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/CasqueSansFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/CasqueSansFil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/Figurine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/Figurine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/SabreLaser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/SabreLaser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +100,7 @@
       <updated>1715097773464</updated>
       <workItem from="1715097774649" duration="1242000" />
       <workItem from="1715176948229" duration="8694000" />
-      <workItem from="1715187169065" duration="26000" />
+      <workItem from="1715187169065" duration="333000" />
     </task>
     <task id="LOCAL-00001" summary="Cretion de L'historique">
       <option name="closed" value="true" />
@@ -118,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715098965714</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Enregistrement produits Magain">
+      <created>1715187241350</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715187241350</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,7 +136,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Cretion de L'historique" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cretion de L'historique" />
+    <MESSAGE value="Enregistrement produits Magain" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enregistrement produits Magain" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
