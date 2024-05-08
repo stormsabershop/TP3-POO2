@@ -6,6 +6,7 @@ public abstract class AbstarctJouet extends AbstractProduit {
 
     public AbstarctJouet(String nom, double prix) {
         super(nom, prix);
+
     }
 
     @Override
@@ -15,6 +16,5 @@ public abstract class AbstarctJouet extends AbstractProduit {
 
     @Override
     public abstract String decrit();
-
 
 }

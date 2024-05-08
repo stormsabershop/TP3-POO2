@@ -8,9 +8,13 @@ import tp3.echange.UI;
 import tp3.etudiant.boite.Boite;
 import tp3.etudiant.client.Achat;
 import tp3.etudiant.client.Panier;
+import tp3.etudiant.produit.Casque;
+import tp3.etudiant.produit.CasqueSansFil;
+import tp3.etudiant.produit.Figurine;
+import tp3.etudiant.produit.SabreLaser;
 import tp3.etudiant.section.*;
 
-import java.io.File;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -28,7 +32,8 @@ public class Magasin implements Modele, Lists, VracNBproduits {
     private int nombreProduitsAvantPanier;
     private int nombreProduitsApresPanier;
     private Historique historique = new Historique();
-
+    private UI ui;
+    private static final String BASE_PATH = "tp3/etudiant/fichiers/archive/";
 
 
     public static final int NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES = 15;
@@ -218,19 +223,82 @@ public class Magasin implements Modele, Lists, VracNBproduits {
     }
 
     @Override
-    public String init(UI ui) {
-        return null;
+    public String init(UI ui) { // lire magain
+        this.ui = ui;
+        List<AbstractProduit> retListe = new ArrayList<>();
+
+        // Attrapez l'exception de fin de fichier pour déterminer la fin de l'exécution.
+        DataInputStream dis = null;
+
+        try {
+            dis = new DataInputStream(new BufferedInputStream(new FileInputStream(BASE_PATH + "produits.mag")));
+
+            while (true) {
+                String typeProuits = dis.readUTF();
+                if (typeProuits.equals("Casque")) {
+                    retListe.add(new Casque(dis.readUTF(), dis.readDouble(), dis.readBoolean()));
+                }
+                if (typeProuits.equals("CasqueSansFil")) {
+                    retListe.add(new CasqueSansFil(dis.readUTF(), dis.readDouble(), dis.readBoolean()));
+                }
+                if (typeProuits.equals("Figurine")) {
+                    retListe.add(new Figurine(dis.readUTF(), dis.readDouble()));
+                } else if (typeProuits.equals("SabreLazer")) {
+                    retListe.add(new SabreLaser(dis.readUTF(), dis.readDouble(), dis.readBoolean()));
+                }
+
+
+            }
+
+        } catch (EOFException eof) {
+
+            System.out.println("");
+
+        } catch (IOException ioe) {
+            System.out.println("Impossible d'acceder au fichier");
+            System.exit(1);
+        } finally {
+            ui.setProduitsDisponibles(retListe);
+            if (dis != null) {
+                try {
+                    dis.close();
+                } catch (IOException e) {
+                    System.out.println("Impossible d'acceder au fichier");
+                }
+            }
+        }
+
+        return "A propos";
     }
 
     @Override
-    public void stop() {
+    public void stop() { // ecris magasin
+        OutputStream os = null;
+        BufferedOutputStream bos = null;
+        DataOutputStream dos = null;
+        try {
+            os = new FileOutputStream(BASE_PATH + "produits.mag", true);
+            bos = new BufferedOutputStream(os);
+            dos = new DataOutputStream(bos);
 
+            for (AbstractProduit produit : ui.getProduitsDisponibles()) {
+                produit.writeProduits(dos);
+            }
+
+        } catch (IOException e) {
+            System.out.println("Impossible d'acceder au fichier");
+        } finally {
+            try {
+                historique.ajouterEvenement("Enregistrement du contenu du magasin");
+                if (dos != null) {
+                    dos.close();
+                }
+            } catch (IOException e) {
+                System.out.println("Impossible d'acceder au fichier");
+            }
+        }
     }
 
-
-    public void init() {
-
-    }
 
     public Entrepot getEntrepot() {
         return entrepot;

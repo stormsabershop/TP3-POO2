@@ -1,15 +1,19 @@
 package tp3.etudiant.produit;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
+
 public class SabreLaser extends AbstarctJouet implements Elite {
 
-	rabaisProduits rabaisProduits = new rabaisProduits();
-	private boolean eliteOuNonElite;
+    rabaisProduits rabaisProduits = new rabaisProduits();
+    private boolean eliteOuNonElite;
 
-	public SabreLaser(String nom, boolean siElite, double prix) {
-		super(nom, prix);
-		this.eliteOuNonElite = siElite;
-		rabaisProduits.calculaRabaisProduis(siElite);
-	}
+    public SabreLaser(String nom, double prix, boolean siElite) {
+        super(nom, prix);
+        this.eliteOuNonElite = siElite;
+        rabaisProduits.calculaRabaisProduis(siElite);
+        setTypeProduits("SabreLazer");
+    }
 
 
 	@Override
@@ -26,14 +30,21 @@ public class SabreLaser extends AbstarctJouet implements Elite {
 		throw new UnsupportedOperationException();
 	}
 
-	@Override
-	public String decrit() {
-		return toString();
-	}
+    @Override
+    public String decrit() {
+        return toString();
+    }
 
-	@Override
-	public String toString() {
-		return "Sabre laser : Categorie= " + getNumeroCategorie() +", Nom= "+getNom() + "eliteOuNon"+eliteOuNonElite+", Prix= "+getPrix();
-	}
+    @Override
+    public String toString() {
+        return "Sabre laser : Categorie= " + getNumeroCategorie() + ", Nom= " + getNom() + "eliteOuNon" + eliteOuNonElite + ", Prix= " + getPrix();
+    }
+
+    @Override
+    public void writeProduits(DataOutputStream dos) throws IOException {
+        dos.writeUTF(getTypeProduits());
+        super.writeProduits(dos);
+        dos.writeBoolean(isEliteOuNonElite());
+    }
 
 }

@@ -1,5 +1,8 @@
 package tp3.etudiant.produit;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
+
 public class Casque extends AbstractEcouteurs {
 
     rabaisProduits rabaisProduits = new rabaisProduits();
@@ -9,6 +12,7 @@ public class Casque extends AbstractEcouteurs {
         super(nom, prix);
         this.estStereo = estStereo;
         rabaisProduits.calculaRabaisProduis(estStereo);
+        setTypeProduits("Casque");
     }
 
     @Override
@@ -21,5 +25,18 @@ public class Casque extends AbstractEcouteurs {
         return "Casque: Categorie= " + getNumeroCategorie() + ", Nom= " + getNom() + ", Prix" + getPrix();
     }
 
+    public boolean isEstStereo() {
+        return estStereo;
+    }
 
+    public void setEstStereo(boolean estStereo) {
+        this.estStereo = estStereo;
+    }
+
+    @Override
+    public void writeProduits(DataOutputStream dos) throws IOException {
+        dos.writeUTF(getTypeProduits());
+        super.writeProduits(dos);
+        dos.writeBoolean(isEstStereo());
+    }
 }

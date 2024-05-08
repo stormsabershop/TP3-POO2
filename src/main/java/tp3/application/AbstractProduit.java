@@ -15,7 +15,10 @@ public abstract class AbstractProduit implements Descriptible, Cloneable, Serial
     private double prix;
 
     private static int numSerieCompteur = 1;
-    private static int numProduitCompteur =0;
+    private static int numProduitCompteur = 0;
+
+    private String typeProduits;
+
 
     public AbstractProduit(String nom, double prix) {
         this.nom = nom;
@@ -75,7 +78,21 @@ public abstract class AbstractProduit implements Descriptible, Cloneable, Serial
         return Objects.hashCode(numSerie);
     }
 
+    public void writeProduits(DataOutputStream dos) throws IOException {
+        dos.writeUTF(nom);
+        dos.writeDouble(prix);
+
+    }
+
     public double getPrix() {
         return prix;
+    }
+
+    public String getTypeProduits() {
+        return typeProduits;
+    }
+
+    public void setTypeProduits(String typeProduits) {
+        this.typeProduits = typeProduits;
     }
 }
