@@ -46,11 +46,11 @@ public class ProduitCreator {
         Object[] parametersValues = convertStringsToValues(
                 parameters,
                 demandeValeursUtilisateur(parameters, classeRequise.getSimpleName()));
-        historique.ajouterEvenement("Ouverture de l’application");
+
 
         try {
             retProduit = (AbstractProduit) constructor.newInstance(parametersValues);
-            historique.ajouterEvenement("Ouverture de l’application");
+
 
         } catch (InstantiationException e) {
             throw new RuntimeException(e);
