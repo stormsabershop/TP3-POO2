@@ -553,8 +553,8 @@ public class MagasinController implements UI {
 
     @Override
     public void setProduitsDisponibles(List<AbstractProduit> produitsDisponibles) {
-        produitExistantCreationListView.setItems(FXCollections.observableList(produitsDisponibles));
-        produitDisponibleListView.setItems(FXCollections.observableList(produitsDisponibles));
+        produitExistantCreationListView.getItems().addAll(FXCollections.observableList(produitsDisponibles));
+        produitDisponibleListView.getItems().addAll(FXCollections.observableList(produitsDisponibles));
 
         // on ne doit pas oublier les compteur statiques
 

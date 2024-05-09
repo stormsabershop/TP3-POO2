@@ -1,1 +1,22 @@
 
+09-05-24 : 12:08:54:18 -> Ouverture de l’application
+09-05-24 : 12:09:08:17 -> Enregistrement du contenu du magasin
+09-05-24 : 12:09:08:17 -> Fermeture de l’application
+09-05-24 : 12:09:11:77 -> Ouverture de l’application
+09-05-24 : 12:09:14:45 -> Enregistrement du contenu du magasin
+09-05-24 : 12:09:14:45 -> Fermeture de l’application
+09-05-24 : 12:09:17:01 -> Ouverture de l’application
+09-05-24 : 12:09:25:15 -> Enregistrement du contenu du magasin
+09-05-24 : 12:09:25:15 -> Fermeture de l’application
+09-05-24 : 12:09:57:34 -> Ouverture de l’application
+09-05-24 : 12:10:04:23 -> Enregistrement du contenu du magasin
+09-05-24 : 12:10:04:23 -> Fermeture de l’application
+09-05-24 : 12:10:07:05 -> Ouverture de l’application
+09-05-24 : 12:10:08:71 -> Enregistrement du contenu du magasin
+09-05-24 : 12:10:08:71 -> Fermeture de l’application
+09-05-24 : 12:10:11:12 -> Ouverture de l’application
+09-05-24 : 12:10:12:92 -> Enregistrement du contenu du magasin
+09-05-24 : 12:10:12:92 -> Fermeture de l’application
+09-05-24 : 12:10:15:13 -> Ouverture de l’application
+09-05-24 : 12:10:21:56 -> Enregistrement du contenu du magasin
+09-05-24 : 12:10:21:56 -> Fermeture de l’application

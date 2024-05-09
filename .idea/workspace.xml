@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c2081649-cf75-47ae-9426-428499fe3a0b" name="Changes" comment="Enregistrement produits Magain(modif)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/application/MagasinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/application/MagasinController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/Magasin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/Magasin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/fichiers/Historique.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/fichiers/Historique.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/historique/Historique.txt" beforeDir="false" afterPath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/historique/Historique.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -104,6 +104,7 @@
       <workItem from="1715097774649" duration="1242000" />
       <workItem from="1715176948229" duration="8694000" />
       <workItem from="1715187169065" duration="1949000" />
+      <workItem from="1715270675240" duration="320000" />
     </task>
     <task id="LOCAL-00001" summary="Cretion de L'historique">
       <option name="closed" value="true" />

@@ -278,7 +278,7 @@ public class Magasin implements Modele, Lists, VracNBproduits {
         BufferedOutputStream bos = null;
         DataOutputStream dos = null;
         try {
-            os = new FileOutputStream(BASE_PATH + "produits.mag", true);
+            os = new FileOutputStream(BASE_PATH + "produits.mag");
             bos = new BufferedOutputStream(os);
             dos = new DataOutputStream(bos);
 
