@@ -122,12 +122,16 @@ public class Achat implements Descriptible, Lists {
 
     private double rabais;
     private double rabaisVrac;
+    private double rabaisPresentoir;
 
+    public static final double RAB_PRESENTOIR = 0.15;
     private double coutFinal;
 
-
+    private Collection<AbstractProduit> produitsAchetesPresentoir;
     private int nombreProduitsAvantPanier;
     private int nombreProduitsApresPanier;
+
+    public static final double DELAI_FIXE_RABAISP = 4;
 
     public Achat(String acheteur, LocalDateTime momentAchat, double montantRabaisGlobal) {
         this.acheteur = acheteur;
@@ -145,7 +149,15 @@ public class Achat implements Descriptible, Lists {
             coutFinal += produit.getPrix();
         }
         coutFinal -= calculerToutLesRabais();
-        coutFinal -= calculerRabaisVrac(coutFinal);
+        double rab = calculerRabaisVrac(coutFinal);
+        if (rab > 0) {
+            coutFinal -= rab;
+        }
+        rab = calculerRabaisPresentoir();
+        if (rab > 0) {
+            coutFinal -= rab;
+        }
+
         return coutFinal;
     }
 
@@ -193,6 +205,7 @@ public class Achat implements Descriptible, Lists {
                 + "\n" + "Côut brute :" + montantBrute
                 + "\n" + "Rabais : - " + rabais
                 + "\n" + "Rabais Vrac : - " + rabaisVrac
+                + "\n" + "Rabais Presentoir : - " + rabaisPresentoir
                 + "\n" + "Côut final :" + coutFinal;
     }
 
@@ -210,20 +223,30 @@ public class Achat implements Descriptible, Lists {
         return rabais;
     }
 
-    public double calculerRabaisVrac(double prixTotal){
+    public double calculerRabaisVrac(double prixTotal) {
 
         double fractionVolumeAchete = (double) nombreProduitsApresPanier / nombreProduitsAvantPanier;
         double rabaisDuVrac = RABAIS_VRAC_MAXIMAL * fractionVolumeAchete * prixTotal / 100;
-        if (fractionVolumeAchete == 1.0){
+        if (fractionVolumeAchete == 1.0) {
             rabaisDuVrac = 0;
         }
         rabaisVrac = rabaisDuVrac;
+        nombreProduitsAvantPanier = 0;
+        nombreProduitsApresPanier = 0;
         return rabaisDuVrac;
     }
 
-    public double calculerRabaisPresentoire(){
-        return -1;
+    public double calculerRabaisPresentoir() {
+
+        rabaisPresentoir = 0;
+        for (AbstractProduit produit : produitsAchetesPresentoir) {
+            System.out.println(produit.getDate().getDayOfMonth() + " - " + momentAchat.getDayOfMonth() + " = " + (produit.getDate().getDayOfMonth() - momentAchat.getDayOfMonth()));
+            rabaisPresentoir += (((produit.getDate().getDayOfMonth()) - momentAchat.getDayOfMonth()) > DELAI_FIXE_RABAISP) ? produit.getPrix() * RAB_PRESENTOIR : 0;
+        }
+        produitsAchetesPresentoir = new ArrayList<>();
+        return rabaisPresentoir;
     }
+
     @Override
     public String decrit() {
         return " salut je suis decrit";
@@ -243,5 +266,13 @@ public class Achat implements Descriptible, Lists {
 
     public void setNombreProduitsApresPanier(int nombreProduitsApresPanier) {
         this.nombreProduitsApresPanier = nombreProduitsApresPanier;
+    }
+
+    public Collection<AbstractProduit> getProduitsAchetesPresentoir() {
+        return produitsAchetesPresentoir;
+    }
+
+    public void setProduitsAchetesPresentoir(Collection<AbstractProduit> produitsAchetesPresentoir) {
+        this.produitsAchetesPresentoir = produitsAchetesPresentoir;
     }
 }

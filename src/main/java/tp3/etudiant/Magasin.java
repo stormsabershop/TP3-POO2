@@ -35,6 +35,8 @@ public class Magasin implements Modele, Lists, VracNBproduits {
     private UI ui;
     private static final String BASE_PATH = "tp3/etudiant/fichiers/archive/";
 
+    private Collection<AbstractProduit> produitsDePresentoir = new ArrayList<>();
+
 
     public static final int NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES = 15;
     public static final int NOMBRE_DE_AIRE_DES_PRESENTOIRES_MAX = 6;
@@ -133,6 +135,7 @@ public class Magasin implements Modele, Lists, VracNBproduits {
 
     @Override
     public void mettreDansPanier(Collection<AbstractProduit> items) { //a lire
+        produitsDePresentoir = new ArrayList<>();
         if (vrac.getAllProduits().size() > nombreProduitsAvantPanier) {
             nombreProduitsAvantPanier = vrac.getAllProduits().size();
         }
@@ -140,8 +143,10 @@ public class Magasin implements Modele, Lists, VracNBproduits {
         for (AbstractProduit abstractProduit : items) {
             panier.ajouteProduit(abstractProduit, provientDeAire(abstractProduit));
             historique.ajouterEvenement("Transfert de produits dans le panier");
-            if (provientDeAire(abstractProduit) == vrac){
+            if (provientDeAire(abstractProduit) == vrac) {
                 nombreDeProduitsAjoutesDansLePanier++;
+            } else {
+                produitsDePresentoir.add(abstractProduit);
             }
         }
         nombreProduitsApresPanier = vrac.getAllProduits().size() - nombreDeProduitsAjoutesDansLePanier;
@@ -182,6 +187,7 @@ public class Magasin implements Modele, Lists, VracNBproduits {
         Achat achat = new Achat(acheteur, date, rabaisGlobal);
         Collection<AbstractProduit> produits = getContenuPanier();
         achat.setProduits(produits);
+        achat.setProduitsAchetesPresentoir(produitsDePresentoir);
         achat.setNombreProduitsAvantPanier(nombreProduitsAvantPanier);
         achat.setNombreProduitsApresPanier(nombreProduitsApresPanier);
         achat.calculerMontantBrut();
@@ -195,6 +201,9 @@ public class Magasin implements Modele, Lists, VracNBproduits {
 
     public void viderPanier() {
         panier.vide();
+        nombreProduitsAvantPanier = 0;
+        nombreProduitsApresPanier = 0;
+
     }
 
     @Override
