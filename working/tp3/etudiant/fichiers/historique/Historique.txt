@@ -291,3 +291,304 @@
 10-05-24 : 10:31:39:06 -> Achat d'un produits
 10-05-24 : 10:31:46:15 -> Enregistrement du contenu du magasin
 10-05-24 : 10:31:46:15 -> Fermeture de l’application
+17-05-24 : 22:09:56:58 -> Ouverture de l’application
+17-05-24 : 22:10:05:27 -> Enregistrement du contenu du magasin
+17-05-24 : 22:10:05:27 -> Fermeture de l’application
+17-05-24 : 22:57:09:13 -> Ouverture de l’application
+17-05-24 : 22:57:46:37 -> Ouverture de l’application
+17-05-24 : 22:57:59:89 -> Enregistrement du contenu du magasin
+17-05-24 : 22:57:59:91 -> Enregistrement du contenu du magasin
+17-05-24 : 22:57:59:91 -> Fermeture de l’application
+17-05-24 : 22:58:03:21 -> Ouverture de l’application
+17-05-24 : 22:58:15:24 -> Commande d’un ou plusieurs produits
+17-05-24 : 22:58:15:24 -> Commande d’un ou plusieurs produits
+17-05-24 : 22:58:15:24 -> Commande d’un ou plusieurs produits
+17-05-24 : 22:58:19:07 -> Transfert de produits dans une section
+17-05-24 : 22:58:22:61 -> Transfert de produits dans une section
+17-05-24 : 22:58:28:34 -> Transfert de produits dans une section
+17-05-24 : 22:58:33:93 -> Enregistrement du contenu du magasin
+17-05-24 : 22:58:33:93 -> Enregistrement du contenu du magasin
+17-05-24 : 22:58:33:93 -> Fermeture de l’application
+17-05-24 : 22:58:36:87 -> Ouverture de l’application
+17-05-24 : 22:59:28:51 -> Ouverture de l’application
+17-05-24 : 22:59:45:26 -> Commande d’un ou plusieurs produits
+17-05-24 : 22:59:45:26 -> Commande d’un ou plusieurs produits
+17-05-24 : 22:59:45:26 -> Commande d’un ou plusieurs produits
+17-05-24 : 22:59:50:27 -> Transfert de produits dans une section
+17-05-24 : 23:00:03:49 -> Enregistrement du contenu du magasin
+17-05-24 : 23:00:03:49 -> Enregistrement du contenu du magasin
+17-05-24 : 23:00:03:49 -> Fermeture de l’application
+17-05-24 : 23:00:50:86 -> Ouverture de l’application
+17-05-24 : 23:01:49:69 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:01:49:69 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:01:49:69 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:01:51:84 -> Transfert de produits dans une section
+17-05-24 : 23:01:53:14 -> Enregistrement du contenu du magasin
+17-05-24 : 23:01:53:14 -> Fermeture de l’application
+17-05-24 : 23:02:14:13 -> Ouverture de l’application
+17-05-24 : 23:02:21:95 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:02:21:95 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:02:21:95 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:02:24:43 -> Transfert de produits dans une section
+17-05-24 : 23:02:35:17 -> Enregistrement du contenu du magasin
+17-05-24 : 23:02:35:17 -> Fermeture de l’application
+17-05-24 : 23:03:55:75 -> Ouverture de l’application
+17-05-24 : 23:04:03:54 -> Enregistrement du contenu du magasin
+17-05-24 : 23:04:03:54 -> Enregistrement du contenu du magasin
+17-05-24 : 23:04:03:54 -> Fermeture de l’application
+17-05-24 : 23:05:22:69 -> Ouverture de l’application
+17-05-24 : 23:05:29:18 -> Enregistrement du contenu du magasin
+17-05-24 : 23:05:29:18 -> Enregistrement du contenu du magasin
+17-05-24 : 23:05:29:18 -> Fermeture de l’application
+17-05-24 : 23:05:31:76 -> Ouverture de l’application
+17-05-24 : 23:05:39:14 -> Enregistrement du contenu du magasin
+17-05-24 : 23:05:39:15 -> Enregistrement du contenu du magasin
+17-05-24 : 23:05:39:15 -> Fermeture de l’application
+17-05-24 : 23:05:46:10 -> Ouverture de l’application
+17-05-24 : 23:05:55:86 -> Enregistrement du contenu du magasin
+17-05-24 : 23:05:55:86 -> Enregistrement du contenu du magasin
+17-05-24 : 23:05:55:86 -> Fermeture de l’application
+17-05-24 : 23:05:58:37 -> Ouverture de l’application
+17-05-24 : 23:06:03:18 -> Enregistrement du contenu du magasin
+17-05-24 : 23:06:03:18 -> Enregistrement du contenu du magasin
+17-05-24 : 23:06:03:18 -> Fermeture de l’application
+17-05-24 : 23:06:33:48 -> Ouverture de l’application
+17-05-24 : 23:06:36:97 -> Enregistrement du contenu du magasin
+17-05-24 : 23:06:36:97 -> Fermeture de l’application
+17-05-24 : 23:07:18:43 -> Ouverture de l’application
+17-05-24 : 23:07:36:56 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:07:36:56 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:07:36:56 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:07:39:48 -> Transfert de produits dans une section
+17-05-24 : 23:07:42:49 -> Transfert de produits dans une section
+17-05-24 : 23:07:52:04 -> Enregistrement du contenu du magasin
+17-05-24 : 23:07:52:04 -> Fermeture de l’application
+17-05-24 : 23:07:54:60 -> Ouverture de l’application
+17-05-24 : 23:08:02:98 -> Enregistrement du contenu du magasin
+17-05-24 : 23:08:02:98 -> Fermeture de l’application
+17-05-24 : 23:13:40:98 -> Ouverture de l’application
+17-05-24 : 23:13:47:29 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:13:47:29 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:13:47:29 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:13:49:77 -> Transfert de produits dans une section
+17-05-24 : 23:13:51:97 -> Transfert de produits dans une section
+17-05-24 : 23:13:53:44 -> Enregistrement du contenu du magasin
+17-05-24 : 23:13:53:46 -> Enregistrement du contenu du magasin
+17-05-24 : 23:13:53:46 -> Fermeture de l’application
+17-05-24 : 23:13:55:84 -> Ouverture de l’application
+17-05-24 : 23:13:59:14 -> Enregistrement du contenu du magasin
+17-05-24 : 23:13:59:14 -> Enregistrement du contenu du magasin
+17-05-24 : 23:13:59:14 -> Fermeture de l’application
+17-05-24 : 23:15:03:99 -> Ouverture de l’application
+17-05-24 : 23:15:07:81 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:15:07:81 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:15:07:81 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:15:10:11 -> Transfert de produits dans une section
+17-05-24 : 23:15:14:56 -> Enregistrement du contenu du magasin
+17-05-24 : 23:15:14:57 -> Enregistrement du contenu du magasin
+17-05-24 : 23:15:14:57 -> Fermeture de l’application
+17-05-24 : 23:15:44:35 -> Ouverture de l’application
+17-05-24 : 23:15:51:96 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:15:51:96 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:15:51:96 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:15:54:05 -> Transfert de produits dans une section
+17-05-24 : 23:15:55:01 -> Enregistrement du contenu du magasin
+17-05-24 : 23:15:55:03 -> Enregistrement du contenu du magasin
+17-05-24 : 23:15:55:03 -> Fermeture de l’application
+17-05-24 : 23:15:59:83 -> Ouverture de l’application
+17-05-24 : 23:16:03:23 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:16:03:23 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:16:03:23 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:16:05:18 -> Transfert de produits dans une section
+17-05-24 : 23:16:05:95 -> Enregistrement du contenu du magasin
+17-05-24 : 23:16:05:97 -> Enregistrement du contenu du magasin
+17-05-24 : 23:16:05:97 -> Fermeture de l’application
+17-05-24 : 23:16:20:14 -> Ouverture de l’application
+17-05-24 : 23:16:24:19 -> Enregistrement du contenu du magasin
+17-05-24 : 23:16:24:21 -> Enregistrement du contenu du magasin
+17-05-24 : 23:16:24:21 -> Fermeture de l’application
+17-05-24 : 23:16:32:51 -> Ouverture de l’application
+17-05-24 : 23:17:04:40 -> Enregistrement du contenu du magasin
+17-05-24 : 23:20:43:95 -> Enregistrement du contenu du magasin
+17-05-24 : 23:21:33:59 -> Fermeture de l’application
+17-05-24 : 23:28:15:96 -> Ouverture de l’application
+17-05-24 : 23:28:17:80 -> Enregistrement du contenu du magasin
+17-05-24 : 23:28:17:82 -> Enregistrement du contenu du magasin
+17-05-24 : 23:28:17:82 -> Fermeture de l’application
+17-05-24 : 23:29:12:73 -> Ouverture de l’application
+17-05-24 : 23:29:14:59 -> Enregistrement du contenu du magasin
+17-05-24 : 23:29:14:61 -> Enregistrement du contenu du magasin
+17-05-24 : 23:29:14:61 -> Fermeture de l’application
+17-05-24 : 23:30:18:47 -> Ouverture de l’application
+17-05-24 : 23:30:22:64 -> Enregistrement du contenu du magasin
+17-05-24 : 23:30:22:66 -> Enregistrement du contenu du magasin
+17-05-24 : 23:30:22:66 -> Fermeture de l’application
+17-05-24 : 23:30:38:49 -> Ouverture de l’application
+17-05-24 : 23:30:43:01 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:30:43:01 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:30:43:01 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:30:45:17 -> Transfert de produits dans une section
+17-05-24 : 23:30:45:94 -> Enregistrement du contenu du magasin
+17-05-24 : 23:30:45:96 -> Enregistrement du contenu du magasin
+17-05-24 : 23:30:45:96 -> Fermeture de l’application
+17-05-24 : 23:32:01:30 -> Ouverture de l’application
+17-05-24 : 23:32:04:01 -> Enregistrement du contenu du magasin
+17-05-24 : 23:32:04:02 -> Enregistrement du contenu du magasin
+17-05-24 : 23:32:04:03 -> Fermeture de l’application
+17-05-24 : 23:43:24:74 -> Ouverture de l’application
+17-05-24 : 23:43:26:77 -> Enregistrement du contenu du magasin
+17-05-24 : 23:43:26:78 -> Enregistrement du contenu du magasin
+17-05-24 : 23:43:26:78 -> Fermeture de l’application
+17-05-24 : 23:45:55:53 -> Ouverture de l’application
+17-05-24 : 23:45:57:25 -> Enregistrement du contenu du magasin
+17-05-24 : 23:45:57:26 -> Enregistrement du contenu du magasin
+17-05-24 : 23:45:57:27 -> Fermeture de l’application
+17-05-24 : 23:46:00:31 -> Ouverture de l’application
+17-05-24 : 23:46:05:51 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:46:05:51 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:46:05:51 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:46:10:39 -> Enregistrement du contenu du magasin
+17-05-24 : 23:46:10:39 -> Enregistrement du contenu du magasin
+17-05-24 : 23:46:10:39 -> Fermeture de l’application
+17-05-24 : 23:46:49:14 -> Ouverture de l’application
+17-05-24 : 23:46:55:42 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:46:55:42 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:46:55:42 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:47:00:80 -> Enregistrement du contenu du magasin
+17-05-24 : 23:47:00:80 -> Enregistrement du contenu du magasin
+17-05-24 : 23:47:00:80 -> Fermeture de l’application
+17-05-24 : 23:47:05:59 -> Ouverture de l’application
+17-05-24 : 23:47:12:42 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:47:12:42 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:47:12:42 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:47:16:19 -> Transfert de produits dans une section
+17-05-24 : 23:47:19:12 -> Enregistrement du contenu du magasin
+17-05-24 : 23:47:19:14 -> Enregistrement du contenu du magasin
+17-05-24 : 23:47:19:14 -> Fermeture de l’application
+17-05-24 : 23:47:21:63 -> Ouverture de l’application
+17-05-24 : 23:47:31:30 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:47:31:30 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:47:31:30 -> Commande d’un ou plusieurs produits
+17-05-24 : 23:47:34:19 -> Transfert de produits dans une section
+17-05-24 : 23:47:38:08 -> Enregistrement du contenu du magasin
+17-05-24 : 23:47:38:09 -> Enregistrement du contenu du magasin
+17-05-24 : 23:47:38:09 -> Fermeture de l’application
+17-05-24 : 23:47:40:64 -> Ouverture de l’application
+17-05-24 : 23:47:46:98 -> Enregistrement du contenu du magasin
+17-05-24 : 23:47:46:98 -> Enregistrement du contenu du magasin
+17-05-24 : 23:47:46:98 -> Fermeture de l’application
+18-05-24 : 00:07:27:07 -> Ouverture de l’application
+18-05-24 : 00:07:35:66 -> Commande d’un ou plusieurs produits
+18-05-24 : 00:07:35:66 -> Commande d’un ou plusieurs produits
+18-05-24 : 00:07:35:66 -> Commande d’un ou plusieurs produits
+18-05-24 : 00:07:38:05 -> Transfert de produits dans une section
+18-05-24 : 00:07:42:39 -> Enregistrement du contenu du magasin
+18-05-24 : 00:07:42:40 -> Enregistrement du contenu du magasin
+18-05-24 : 00:07:42:40 -> Fermeture de l’application
+18-05-24 : 00:07:45:33 -> Ouverture de l’application
+18-05-24 : 00:07:54:24 -> Enregistrement du contenu du magasin
+18-05-24 : 00:07:54:24 -> Enregistrement du contenu du magasin
+18-05-24 : 00:07:54:24 -> Fermeture de l’application
+18-05-24 : 00:08:05:75 -> Ouverture de l’application
+18-05-24 : 00:08:12:36 -> Enregistrement du contenu du magasin
+18-05-24 : 00:08:12:36 -> Enregistrement du contenu du magasin
+18-05-24 : 00:08:12:36 -> Fermeture de l’application
+18-05-24 : 00:08:15:12 -> Ouverture de l’application
+18-05-24 : 00:08:18:91 -> Commande d’un ou plusieurs produits
+18-05-24 : 00:08:18:91 -> Commande d’un ou plusieurs produits
+18-05-24 : 00:08:18:91 -> Commande d’un ou plusieurs produits
+18-05-24 : 00:08:28:63 -> Transfert de produits dans une section
+18-05-24 : 00:08:39:21 -> Transfert de produits dans une section
+18-05-24 : 00:08:41:27 -> Enregistrement du contenu du magasin
+18-05-24 : 00:08:41:27 -> Enregistrement du contenu du magasin
+18-05-24 : 00:08:41:27 -> Fermeture de l’application
+18-05-24 : 00:08:43:98 -> Ouverture de l’application
+18-05-24 : 00:08:54:44 -> Enregistrement du contenu du magasin
+18-05-24 : 00:08:54:44 -> Enregistrement du contenu du magasin
+18-05-24 : 00:08:54:44 -> Fermeture de l’application
+18-05-24 : 00:12:03:75 -> Ouverture de l’application
+18-05-24 : 00:13:03:56 -> Enregistrement du contenu du magasin
+18-05-24 : 00:13:03:56 -> Enregistrement du contenu du magasin
+18-05-24 : 00:13:03:56 -> Fermeture de l’application
+18-05-24 : 00:18:29:96 -> Ouverture de l’application
+18-05-24 : 00:18:33:27 -> le magasin de fait vider
+18-05-24 : 00:18:41:90 -> Commande d’un ou plusieurs produits
+18-05-24 : 00:18:41:91 -> Commande d’un ou plusieurs produits
+18-05-24 : 00:18:41:91 -> Commande d’un ou plusieurs produits
+18-05-24 : 00:18:45:31 -> Transfert de produits dans une section
+18-05-24 : 00:18:47:07 -> le magasin de fait vider
+18-05-24 : 00:18:50:61 -> Enregistrement du contenu du magasin
+18-05-24 : 00:18:50:61 -> Enregistrement du contenu du magasin
+18-05-24 : 00:18:50:62 -> Fermeture de l’application
+18-05-24 : 00:20:43:90 -> Ouverture de l’application
+18-05-24 : 00:20:50:00 -> le magasin de fait vider
+18-05-24 : 00:20:58:19 -> Enregistrement du contenu du magasin
+18-05-24 : 00:20:58:19 -> Enregistrement du contenu du magasin
+18-05-24 : 00:20:58:19 -> Fermeture de l’application
+18-05-24 : 00:26:52:03 -> Ouverture de l’application
+18-05-24 : 00:27:13:57 -> Enregistrement du contenu du magasin
+18-05-24 : 00:27:13:57 -> Enregistrement du contenu du magasin
+18-05-24 : 00:27:13:57 -> Fermeture de l’application
+18-05-24 : 00:28:57:36 -> Ouverture de l’application
+18-05-24 : 00:29:03:51 -> Enregistrement du contenu du magasin
+18-05-24 : 00:29:03:52 -> Enregistrement du contenu du magasin
+18-05-24 : 00:29:03:52 -> Fermeture de l’application
+18-05-24 : 00:29:05:95 -> Ouverture de l’application
+18-05-24 : 00:29:09:27 -> le magasin de fait vider
+18-05-24 : 00:29:13:62 -> Enregistrement du contenu du magasin
+18-05-24 : 00:29:13:62 -> Enregistrement du contenu du magasin
+18-05-24 : 00:29:13:62 -> Fermeture de l’application
+18-05-24 : 00:29:44:05 -> Ouverture de l’application
+18-05-24 : 00:29:51:22 -> le magasin de fait vider
+18-05-24 : 00:29:55:40 -> Enregistrement du contenu du magasin
+18-05-24 : 00:29:55:40 -> Enregistrement du contenu du magasin
+18-05-24 : 00:29:55:40 -> Fermeture de l’application
+18-05-24 : 00:36:53:88 -> Ouverture de l’application
+18-05-24 : 00:37:00:70 -> Commande d’un ou plusieurs produits
+18-05-24 : 00:37:00:70 -> Commande d’un ou plusieurs produits
+18-05-24 : 00:37:00:70 -> Commande d’un ou plusieurs produits
+18-05-24 : 00:37:04:81 -> Transfert de produits dans une section
+18-05-24 : 00:39:27:73 -> Ouverture de l’application
+18-05-24 : 00:39:32:83 -> Commande d’un ou plusieurs produits
+18-05-24 : 00:39:32:84 -> Commande d’un ou plusieurs produits
+18-05-24 : 00:39:32:84 -> Commande d’un ou plusieurs produits
+18-05-24 : 00:39:35:07 -> Transfert de produits dans une section
+18-05-24 : 00:39:57:05 -> le magasin de fait vider
+18-05-24 : 00:40:00:97 -> Commande d’un ou plusieurs produits
+18-05-24 : 00:40:00:97 -> Commande d’un ou plusieurs produits
+18-05-24 : 00:40:00:97 -> Commande d’un ou plusieurs produits
+18-05-24 : 00:40:05:32 -> Transfert de produits dans une section
+18-05-24 : 00:40:09:17 -> Enregistrement du contenu du magasin
+18-05-24 : 00:40:09:17 -> Enregistrement du contenu du magasin
+18-05-24 : 00:40:09:17 -> Fermeture de l’application
+18-05-24 : 00:40:11:64 -> Ouverture de l’application
+18-05-24 : 00:40:15:58 -> Enregistrement du contenu du magasin
+18-05-24 : 00:40:15:59 -> Enregistrement du contenu du magasin
+18-05-24 : 00:40:15:59 -> Fermeture de l’application
+18-05-24 : 00:40:22:61 -> Ouverture de l’application
+18-05-24 : 00:40:38:67 -> Enregistrement du contenu du magasin
+18-05-24 : 00:40:38:68 -> Enregistrement du contenu du magasin
+18-05-24 : 00:40:38:68 -> Fermeture de l’application
+18-05-24 : 00:45:22:87 -> Ouverture de l’application
+18-05-24 : 00:45:39:85 -> Enregistrement du contenu du magasin
+18-05-24 : 00:45:39:85 -> Enregistrement du contenu du magasin
+18-05-24 : 00:45:39:85 -> Fermeture de l’application
+18-05-24 : 00:52:55:16 -> Ouverture de l’application
+18-05-24 : 00:53:12:64 -> Ouverture de l’application
+18-05-24 : 00:53:27:01 -> Ouverture de l’application
+18-05-24 : 00:53:34:47 -> Ouverture de l’application
+18-05-24 : 00:54:36:05 -> Ouverture de l’application
+18-05-24 : 00:55:02:70 -> Enregistrement du contenu du magasin
+18-05-24 : 00:55:02:70 -> Enregistrement du contenu du magasin
+18-05-24 : 00:55:02:70 -> Fermeture de l’application
+18-05-24 : 00:59:41:38 -> Ouverture de l’application
+18-05-24 : 00:59:54:63 -> Enregistrement du contenu du magasin
+18-05-24 : 00:59:54:63 -> Enregistrement du contenu du magasin
+18-05-24 : 00:59:54:63 -> Fermeture de l’application
+18-05-24 : 01:00:48:18 -> Ouverture de l’application
+18-05-24 : 01:00:54:47 -> Contenu du magasin archivé.
+18-05-24 : 01:01:04:52 -> le magasin de fait vider
+18-05-24 : 01:01:12:97 -> Contenu du magasin reconstruit à partir du fichier d'archive.
+18-05-24 : 01:01:18:80 -> Enregistrement du contenu du magasin
+18-05-24 : 01:01:18:80 -> Enregistrement du contenu du magasin
+18-05-24 : 01:01:18:80 -> Fermeture de l’application

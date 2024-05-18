@@ -3,9 +3,10 @@ package tp3.etudiant.section;
 
 import tp3.etudiant.boite.Boite;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Entrepot {
+public class Entrepot implements Serializable {
     public static final int NOMBRE_SECTION = 5;
     public static final int NOMBRE_TABLETTE = 5;
     public static final int NOMBRE_CATEGORIES = 3;

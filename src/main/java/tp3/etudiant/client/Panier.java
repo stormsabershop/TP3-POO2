@@ -3,9 +3,10 @@ package tp3.etudiant.client;
 import tp3.application.AbstractProduit;
 import tp3.etudiant.section.AireI;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Panier {
+public class Panier implements Serializable {
 
     private List<AbstractProduit> produits; // essaye d'utiliser la map et supprimer la lsist
     private Map<AbstractProduit, AireI> panierMap;

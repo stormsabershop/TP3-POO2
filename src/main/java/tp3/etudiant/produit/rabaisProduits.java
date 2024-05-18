@@ -1,5 +1,7 @@
 package tp3.etudiant.produit;
 
+import java.io.Serializable;
+
 public class rabaisProduits {
 
     private double rabaisProduis;

@@ -2,6 +2,7 @@ package tp3.etudiant.produit;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.Serializable;
 
 public class CasqueSansFil extends Casque {
     public CasqueSansFil(String nom, double prix, boolean estStrereo) {

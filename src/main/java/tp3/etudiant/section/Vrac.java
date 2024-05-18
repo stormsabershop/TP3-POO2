@@ -3,12 +3,15 @@ package tp3.etudiant.section;
 import tp3.application.AbstractProduit;
 import tp3.etudiant.boite.Boite;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Vrac implements AireI, Lists{
+public class Vrac implements AireI, Lists, Serializable {
     @Override
     public String decrit() {
         return "vrac ici";
@@ -99,4 +102,6 @@ public class Vrac implements AireI, Lists{
         }
         return estla;
     }
+
+
 }

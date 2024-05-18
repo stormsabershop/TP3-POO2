@@ -4,6 +4,8 @@ import tp3.application.AbstractProduit;
 import tp3.echange.Descriptible;
 import tp3.etudiant.boite.Boite;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -24,6 +26,5 @@ public interface AireI extends Descriptible, Serializable {
     void gereSurplus(Collection<AbstractProduit> restant);
 
     public boolean estPresent(AbstractProduit produit);
-
 
 }

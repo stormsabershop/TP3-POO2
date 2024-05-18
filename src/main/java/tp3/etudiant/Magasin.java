@@ -8,6 +8,8 @@ import tp3.echange.UI;
 import tp3.etudiant.boite.Boite;
 import tp3.etudiant.client.Achat;
 import tp3.etudiant.client.Panier;
+import tp3.etudiant.fichiers.MagasinReader;
+import tp3.etudiant.fichiers.MagasinWriter;
 import tp3.etudiant.produit.Casque;
 import tp3.etudiant.produit.CasqueSansFil;
 import tp3.etudiant.produit.Figurine;
@@ -18,7 +20,7 @@ import java.io.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class Magasin implements Modele, Lists, VracNBproduits {
+public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
 
 
     private Collection<Achat> achats;
@@ -31,11 +33,11 @@ public class Magasin implements Modele, Lists, VracNBproduits {
 
     private int nombreProduitsAvantPanier;
     private int nombreProduitsApresPanier;
-    private Historique historique = new Historique();
-    private UI ui;
+    private transient Historique historique = new Historique();
+    private transient UI ui;
     private static final String BASE_PATH = "tp3/etudiant/fichiers/archive/";
 
-    private Collection<AbstractProduit> produitsDePresentoir = new ArrayList<>();
+    private Collection<AbstractProduit> produitsDePresentoir;
 
 
     public static final int NOMBRE_DE_PLACE_MAX_DANS_AIRE_DES_PRESENTOIRES = 15;
@@ -47,6 +49,7 @@ public class Magasin implements Modele, Lists, VracNBproduits {
     public Magasin() {
         // Instanciez les attributs nécessaires
         historique.ajouterEvenement("Ouverture de l’application");
+        produitsDePresentoir = new ArrayList<>();
         this.achats = new ArrayList<>();
         this.panier = new Panier();
         this.entrepot = new Entrepot();
@@ -219,17 +222,49 @@ public class Magasin implements Modele, Lists, VracNBproduits {
 
     @Override
     public void archive(File file) {
-
+        try {
+            MagasinWriter.serialize(this, file);
+            historique.ajouterEvenement("Contenu du magasin archivé.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Impossible d'archiver le contenu du magasin.");
+        }
     }
 
     @Override
     public void reconstruit(File file) {
-
+        try {
+            Magasin magasin = MagasinReader.deserialize(file);
+            this.achats = magasin.achats;
+            this.panier = magasin.panier;
+            this.entrepot = magasin.entrepot;
+            this.charite = magasin.charite;
+            this.sections = magasin.sections;
+            this.airesDesPresentoires = magasin.airesDesPresentoires;
+            this.nombreProduitsAvantPanier = magasin.nombreProduitsAvantPanier;
+            this.nombreProduitsApresPanier = magasin.nombreProduitsApresPanier;
+            this.produitsDePresentoir = magasin.produitsDePresentoir;
+            this.vrac = magasin.vrac;
+            historique.ajouterEvenement("Contenu du magasin reconstruit à partir du fichier d'archive.");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("Impossible de reconstruire le contenu du magasin.");
+        }
     }
 
     @Override
     public void viderMagasin() {
-
+        historique.ajouterEvenement("le magasin de fait vider");
+        produitsDePresentoir = new ArrayList<>();
+        this.achats = new ArrayList<>();
+        this.panier = new Panier();
+        this.entrepot = new Entrepot();
+        this.vrac = new Vrac();
+        this.sections = new ArrayList<AireI>(List.of(vrac, new Presentoires()));
+        this.charite = new Charite();
+        this.airesDesPresentoires = new AiresDesPresentoires();
+        this.nombreProduitsAvantPanier = 0;
+        this.nombreProduitsApresPanier = 0;
     }
 
     @Override
@@ -237,7 +272,7 @@ public class Magasin implements Modele, Lists, VracNBproduits {
         this.ui = ui;
         List<AbstractProduit> retListe = new ArrayList<>();
 
-        // Attrapez l'exception de fin de fichier pour déterminer la fin de l'exécution.
+        // Attraper exception de fin de fichier pour determiner la fin de l'exécution.
         DataInputStream dis = null;
 
         try {
@@ -278,6 +313,41 @@ public class Magasin implements Modele, Lists, VracNBproduits {
             }
         }
 
+
+        ObjectInputStream ois = null;
+
+        try {
+            ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(BASE_PATH + "sections.obj")));
+
+            while (true) {
+                sections.add((AireI) ois.readObject());
+            }
+
+        } catch (EOFException eof) {
+
+            System.out.println(" ");
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException ioe) {
+            System.out.println("Impossible d'acceder au fichier");
+            System.exit(1);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (ois != null) {
+                try {
+                    ois.close();
+                } catch (IOException e) {
+                    System.out.println("Impossible d'acceder au fichier");
+                }
+            }
+        }
+
+
+        // lire les sections
+
+
         return "A propos";
     }
 
@@ -307,7 +377,45 @@ public class Magasin implements Modele, Lists, VracNBproduits {
                 System.out.println("Impossible d'acceder au fichier");
             }
         }
+
+
+        ObjectOutputStream oos = null;
+        FileOutputStream os2 = null;
+        BufferedOutputStream bos2 = null;
+
+        //ecrire les sections
+        try {
+            os2 = new FileOutputStream(BASE_PATH + "sections.obj");
+            bos2 = new BufferedOutputStream(os2);
+            oos = new ObjectOutputStream(bos2);
+
+            for (AireI section : sections) {
+                if (section.getAllProduits().size() > 0 && section.getClass() != Vrac.class) {
+                    oos.writeObject(section);
+                }
+
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Impossible d'acceder au fichier");
+        } finally {
+            try {
+                historique.ajouterEvenement("Enregistrement du contenu du magasin");
+                if (oos != null) {
+                    oos.close();
+                }
+            } catch (IOException e) {
+                System.out.println("Impossible d'acceder au fichier");
+                e.printStackTrace();
+            }
+        }
+
+
         historique.ajouterEvenement("Fermeture de l’application");
+
+
     }
 
 

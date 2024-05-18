@@ -3,9 +3,12 @@ package tp3.etudiant.section;
 import tp3.application.AbstractProduit;
 import tp3.etudiant.boite.Boite;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.*;
 
-public class AiresDesPresentoires implements AireI, Lists {
+public class AiresDesPresentoires implements AireI, Lists, Serializable {
     Map<String, List<AbstractProduit>> contenuPresentoires;
 
     public AiresDesPresentoires() {
@@ -103,5 +106,10 @@ public class AiresDesPresentoires implements AireI, Lists {
             estla = false;
         }
         return estla;
+    }
+
+    public void writeSection(DataOutputStream dos) throws IOException {
+
+
     }
 }
