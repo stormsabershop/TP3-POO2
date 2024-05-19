@@ -17,6 +17,7 @@ import tp3.etudiant.produit.SabreLaser;
 import tp3.etudiant.section.*;
 
 import java.io.*;
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -313,7 +314,7 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
             }
         }
 
-
+        // lire les sections
         ObjectInputStream ois = null;
 
         try {
@@ -344,11 +345,37 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
             }
         }
 
+// lire a propos
+        List<String> retPhrases = new ArrayList<>();
 
-        // lire les sections
+        String filePath = "resources/APropos.txt";
+        URL url = Magasin.class.getClassLoader().getResource("APropos.txt");
+
+        try (InputStreamReader fr = new InputStreamReader(url.openStream());
+             BufferedReader bf = new BufferedReader(fr)) {
+
+            String phrase = bf.readLine();
+            while (phrase != null) {
+                retPhrases.add(phrase);
+                phrase = bf.readLine();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Erreur lors de la lecture du fichier APropos.txt";
+        }
 
 
-        return "A propos";
+        retPhrases.add("");
+        retPhrases.add("Jérôme Ouellet");
+        retPhrases.add("Boubou Tamboura");
+
+        StringBuilder content = new StringBuilder();
+        for (String line : retPhrases) {
+            content.append(line).append("\n");
+        }
+
+        return content.toString();
     }
 
     @Override

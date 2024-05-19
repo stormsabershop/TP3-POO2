@@ -592,3 +592,22 @@
 18-05-24 : 01:01:18:80 -> Enregistrement du contenu du magasin
 18-05-24 : 01:01:18:80 -> Enregistrement du contenu du magasin
 18-05-24 : 01:01:18:80 -> Fermeture de l’application
+18-05-24 : 20:41:35:04 -> Ouverture de l’application
+18-05-24 : 20:41:40:98 -> Enregistrement du contenu du magasin
+18-05-24 : 20:41:40:98 -> Enregistrement du contenu du magasin
+18-05-24 : 20:41:40:99 -> Fermeture de l’application
+18-05-24 : 21:29:00:33 -> Ouverture de l’application
+18-05-24 : 21:30:42:06 -> Ouverture de l’application
+18-05-24 : 21:31:39:63 -> Ouverture de l’application
+18-05-24 : 21:31:49:96 -> Ouverture de l’application
+18-05-24 : 21:31:51:68 -> Enregistrement du contenu du magasin
+18-05-24 : 21:31:51:68 -> Enregistrement du contenu du magasin
+18-05-24 : 21:31:51:68 -> Fermeture de l’application
+18-05-24 : 21:42:56:71 -> Ouverture de l’application
+18-05-24 : 21:43:04:15 -> Enregistrement du contenu du magasin
+18-05-24 : 21:43:04:16 -> Enregistrement du contenu du magasin
+18-05-24 : 21:43:04:16 -> Fermeture de l’application
+18-05-24 : 21:43:08:00 -> Ouverture de l’application
+18-05-24 : 21:43:26:64 -> Contenu du magasin archivé.
+18-05-24 : 21:43:29:07 -> le magasin de fait vider
+18-05-24 : 21:43:34:87 -> Contenu du magasin reconstruit à partir du fichier d'archive.

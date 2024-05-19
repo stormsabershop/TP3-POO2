@@ -5,25 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2081649-cf75-47ae-9426-428499fe3a0b" name="Changes" comment="Enregistrement produits Magain(modif)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/fichiers/MagasinReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/fichiers/MagasinWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/archive/sections.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/APropos.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/Magasin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/Magasin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/AbstarctJouet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/AbstarctJouet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/AbstractEcouteurs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/AbstractEcouteurs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/Casque.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/Casque.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/CasqueSansFil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/CasqueSansFil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/Figurine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/Figurine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/SabreLaser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/SabreLaser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/rabaisProduits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/produit/rabaisProduits.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/section/AireI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/section/AireI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/section/AiresDesPresentoires.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/section/AiresDesPresentoires.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/section/Charite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/section/Charite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/section/Entrepot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/section/Entrepot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/section/Presentoires.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/section/Presentoires.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/section/Vrac.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/section/Vrac.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/archive/produits.mag" beforeDir="false" afterPath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/archive/produits.mag" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/historique/Historique.txt" beforeDir="false" afterPath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/historique/Historique.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,6 +44,13 @@
     &quot;accountId&quot;: &quot;84fbda08-7f82-49c5-ae02-00958abbd617&quot;
   }
 }</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -83,11 +75,15 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\2346784\IdeaProjects\TP3-POO2\src\main\resources" />
       <recent name="C:\Users\2341895\Download\TP3-POO2\working\tp3\etudiant\fichiers\historique" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -130,6 +126,9 @@
       <workItem from="1715270675240" duration="320000" />
       <workItem from="1715343615963" duration="8067000" />
       <workItem from="1715998134192" duration="9993000" />
+      <workItem from="1716078990389" duration="3574000" />
+      <workItem from="1716082759221" duration="2000" />
+      <workItem from="1716082767988" duration="260000" />
     </task>
     <task id="LOCAL-00001" summary="Cretion de L'historique">
       <option name="closed" value="true" />
