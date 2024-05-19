@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2081649-cf75-47ae-9426-428499fe3a0b" name="Changes" comment="Enregistrement produits Magain(modif)">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/APropos.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/Magasin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/Magasin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/section/Entrepot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/section/Entrepot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/archive/produits.mag" beforeDir="false" afterPath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/archive/produits.mag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/archive/sections.obj" beforeDir="false" afterPath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/archive/sections.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/historique/Historique.txt" beforeDir="false" afterPath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/historique/Historique.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,13 +45,6 @@
     &quot;accountId&quot;: &quot;84fbda08-7f82-49c5-ae02-00958abbd617&quot;
   }
 }</component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -129,6 +123,7 @@
       <workItem from="1716078990389" duration="3574000" />
       <workItem from="1716082759221" duration="2000" />
       <workItem from="1716082767988" duration="260000" />
+      <workItem from="1716086731670" duration="1728000" />
     </task>
     <task id="LOCAL-00001" summary="Cretion de L'historique">
       <option name="closed" value="true" />

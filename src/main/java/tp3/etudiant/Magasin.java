@@ -138,7 +138,7 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
 
 
     @Override
-    public void mettreDansPanier(Collection<AbstractProduit> items) { //a lire
+    public void mettreDansPanier(Collection<AbstractProduit> items) {
         produitsDePresentoir = new ArrayList<>();
         if (vrac.getAllProduits().size() > nombreProduitsAvantPanier) {
             nombreProduitsAvantPanier = vrac.getAllProduits().size();
@@ -269,11 +269,10 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
     }
 
     @Override
-    public String init(UI ui) { // lire magain
+    public String init(UI ui) {
         this.ui = ui;
         List<AbstractProduit> retListe = new ArrayList<>();
 
-        // Attraper exception de fin de fichier pour determiner la fin de l'exécution.
         DataInputStream dis = null;
 
         try {
@@ -345,7 +344,7 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
             }
         }
 
-// lire a propos
+        // lire a propos
         List<String> retPhrases = new ArrayList<>();
 
         String filePath = "resources/APropos.txt";
@@ -379,7 +378,7 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
     }
 
     @Override
-    public void stop() { // ecris magasin
+    public void stop() {
         OutputStream os = null;
         BufferedOutputStream bos = null;
         DataOutputStream dos = null;
@@ -396,7 +395,6 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
             System.out.println("Impossible d'acceder au fichier");
         } finally {
             try {
-                historique.ajouterEvenement("Enregistrement du contenu du magasin");
                 if (dos != null) {
                     dos.close();
                 }

@@ -100,22 +100,16 @@ public class Entrepot implements Serializable {
 
 
     public void retireBoite(Boite boite) {
-
         for (int categorie = 0; categorie < entreposage.length; categorie++) {
             Boite[][] section = entreposage[categorie];
-
             for (int sectionIndex = 0; sectionIndex < section.length; sectionIndex++) {
                 Boite[] tablettes = section[sectionIndex];
-
                 for (int tabletteIndex = 0; tabletteIndex < tablettes.length; tabletteIndex++) {
                     Boite currentBoite = tablettes[tabletteIndex];
-
                     if (currentBoite != null && currentBoite.equals(boite)) {
-
                         tablettes[tabletteIndex] = null;
-
                         descendreBoites(categorie, sectionIndex, tabletteIndex);
-                        return;
+                        break;
                     }
                 }
             }
@@ -125,16 +119,17 @@ public class Entrepot implements Serializable {
 
     private void descendreBoites(int categorie, int sectionIndex, int tabletteIndex) {
 
-        for (int i = sectionIndex; i < entreposage[categorie].length; i++) {
+        if (tabletteIndex < 1 || tabletteIndex > entreposage[0][0].length) {
+            return;
+        }
+        if (entreposage[sectionIndex][categorie][tabletteIndex - 1] == null) {
+            return;
+        }
+        Boite boiteADescendre = entreposage[sectionIndex][categorie][tabletteIndex - 1];
 
-            if (i == entreposage[categorie].length - 1) {
-                break;
-            }
-            Boite[] currentSection = entreposage[categorie][i];
-            Boite[] nextSection = entreposage[categorie][i + 1];
-            currentSection[tabletteIndex] = nextSection[tabletteIndex];
-
-            nextSection[tabletteIndex] = null;
+        if (tabletteIndex < entreposage[0][0].length) {
+            entreposage[sectionIndex][categorie][tabletteIndex] = boiteADescendre;
+            entreposage[sectionIndex][categorie][tabletteIndex - 1] = null;
         }
     }
 
