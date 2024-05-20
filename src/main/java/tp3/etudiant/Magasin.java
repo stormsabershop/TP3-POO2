@@ -313,13 +313,57 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
             }
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+
+        DataInputStream dis2 = null;
+
+        try {
+            dis2 = new DataInputStream(new BufferedInputStream(new FileInputStream(BASE_PATH + "vrac.mag")));
+
+            while (true) {
+                String typeProuits = dis2.readUTF();
+                if (typeProuits.equals("Casque")) {
+                    retListe.add(new Casque(dis2.readUTF(), dis2.readDouble(), dis2.readBoolean()));
+                }
+                if (typeProuits.equals("CasqueSansFil")) {
+                    retListe.add(new CasqueSansFil(dis2.readUTF(), dis2.readDouble(), dis2.readBoolean()));
+                }
+                if (typeProuits.equals("Figurine")) {
+                    retListe.add(new Figurine(dis2.readUTF(), dis2.readDouble()));
+                } else if (typeProuits.equals("SabreLazer")) {
+                    retListe.add(new SabreLaser(dis2.readUTF(), dis2.readDouble(), dis2.readBoolean()));
+                }
+
+
+            }
+
+        } catch (EOFException eof) {
+
+            System.out.println("");
+
+        } catch (IOException ioe) {
+            System.out.println("Impossible d'acceder au fichier");
+            System.exit(1);
+        } finally {
+            vrac.placerProduits(retListe);
+            if (dis2 != null) {
+                try {
+                    dis2.close();
+                } catch (IOException e) {
+                    System.out.println("Impossible d'acceder au fichier");
+                }
+            }
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+
         // lire les sections
 
 
         ObjectInputStream ois = null;
         try {
             ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(BASE_PATH + "sections.obj")));
-            sections = new ArrayList<>(); // Réinitialiser les sections
+            sections = new ArrayList<>();
             while (true) {
                 try {
                     AireI section = (AireI) ois.readObject();
@@ -329,7 +373,6 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
                         System.out.println(vrac.getAllProduits());
                     }
                 } catch (EOFException eof) {
-                    // Fin du fichier
                     break;
                 }
             }

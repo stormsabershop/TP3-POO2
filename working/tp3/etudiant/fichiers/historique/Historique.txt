@@ -1250,3 +1250,14 @@
 19-05-24 : 21:48:25:57 -> Transfert de produits dans une section
 19-05-24 : 21:48:29:10 -> Enregistrement du contenu du magasin
 19-05-24 : 21:48:29:10 -> Fermeture de l’application
+19-05-24 : 21:52:43:77 -> Ouverture de l’application
+19-05-24 : 21:55:29:60 -> Enregistrement du contenu du magasin
+19-05-24 : 21:55:29:61 -> Fermeture de l’application
+19-05-24 : 21:55:33:01 -> Ouverture de l’application
+19-05-24 : 21:55:38:22 -> Enregistrement du contenu du magasin
+19-05-24 : 21:55:38:22 -> Fermeture de l’application
+19-05-24 : 21:57:12:49 -> Ouverture de l’application
+19-05-24 : 21:57:21:80 -> Contenu du magasin archivé.
+19-05-24 : 21:57:25:81 -> le magasin de fait vider
+19-05-24 : 21:57:30:47 -> Enregistrement du contenu du magasin
+19-05-24 : 21:57:30:47 -> Fermeture de l’application

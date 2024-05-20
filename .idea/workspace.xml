@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2081649-cf75-47ae-9426-428499fe3a0b" name="Changes" comment="Enregistrement produits Magain(modif)">
-      <change afterPath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/archive/vrac.mag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="c2081649-cf75-47ae-9426-428499fe3a0b" name="Changes" comment="presque fini">
       <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/Magasin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/Magasin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tp3/etudiant/client/Achat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tp3/etudiant/client/Achat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/archive/produits.mag" beforeDir="false" afterPath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/archive/produits.mag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/archive/sections.obj" beforeDir="false" afterPath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/archive/sections.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/archive/vrac.mag" beforeDir="false" afterPath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/archive/vrac.mag" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/historique/Historique.txt" beforeDir="false" afterPath="$PROJECT_DIR$/working/tp3/etudiant/fichiers/historique/Historique.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,7 +128,7 @@
       <workItem from="1716082759221" duration="2000" />
       <workItem from="1716082767988" duration="260000" />
       <workItem from="1716086731670" duration="1728000" />
-      <workItem from="1716160612245" duration="9105000" />
+      <workItem from="1716160612245" duration="9511000" />
     </task>
     <task id="LOCAL-00001" summary="Cretion de L'historique">
       <option name="closed" value="true" />
@@ -163,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715187887450</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="presque fini">
+      <created>1716169751695</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1716169751695</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,7 +187,8 @@
     <MESSAGE value="Cretion de L'historique" />
     <MESSAGE value="Enregistrement produits Magain" />
     <MESSAGE value="Enregistrement produits Magain(modif)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enregistrement produits Magain(modif)" />
+    <MESSAGE value="presque fini" />
+    <option name="LAST_COMMIT_MESSAGE" value="presque fini" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
