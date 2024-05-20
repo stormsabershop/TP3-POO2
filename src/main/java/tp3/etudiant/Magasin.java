@@ -55,7 +55,7 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
         this.panier = new Panier();
         this.entrepot = new Entrepot();
         this.vrac = new Vrac();
-        this.sections = new ArrayList<AireI>(List.of(vrac, new Presentoires()));
+        this.sections = new ArrayList<>(List.of(vrac, new Presentoires()));
         this.charite = new Charite();
         this.airesDesPresentoires = new AiresDesPresentoires();
         this.nombreProduitsAvantPanier = 0;
@@ -241,11 +241,11 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
             this.entrepot = magasin.entrepot;
             this.charite = magasin.charite;
             this.sections = magasin.sections;
+            this.vrac = magasin.vrac;
             this.airesDesPresentoires = magasin.airesDesPresentoires;
             this.nombreProduitsAvantPanier = magasin.nombreProduitsAvantPanier;
             this.nombreProduitsApresPanier = magasin.nombreProduitsApresPanier;
             this.produitsDePresentoir = magasin.produitsDePresentoir;
-            this.vrac = magasin.vrac;
             historique.ajouterEvenement("Contenu du magasin reconstruit à partir du fichier d'archive.");
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -314,7 +314,49 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
         }
 
         // lire les sections
+
+
         ObjectInputStream ois = null;
+        try {
+            ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(BASE_PATH + "sections.obj")));
+            sections = new ArrayList<>(); // Réinitialiser les sections
+            while (true) {
+                try {
+                    AireI section = (AireI) ois.readObject();
+                    sections.add(section);
+                    if (section instanceof Vrac) {
+                        vrac = (Vrac) section;
+                        System.out.println(vrac.getAllProduits());
+                    }
+                } catch (EOFException eof) {
+                    // Fin du fichier
+                    break;
+                }
+            }
+            if (sections.isEmpty()) {
+                vrac = new Vrac();
+                sections.addAll(List.of(vrac, new Presentoires()));
+            } else if (!sections.contains(vrac)) {
+                vrac = new Vrac();
+                sections.add(vrac);
+            } else {
+                sections.add(new Presentoires());
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Impossible d'acceder au fichier");
+            e.printStackTrace();
+        } finally {
+            if (ois != null) {
+                try {
+                    ois.close();
+                } catch (IOException e) {
+                    System.out.println("Impossible d'acceder au fichier");
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        /*ObjectInputStream ois = null;
 
         try {
             ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(BASE_PATH + "sections.obj")));
@@ -343,6 +385,8 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
                 }
             }
         }
+         */
+
 
         // lire a propos
         List<String> retPhrases = new ArrayList<>();
@@ -404,6 +448,39 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
         }
 
 
+        ////////////////////////////////////////////////////////////////////////////////
+
+        DataOutputStream oos2 = null;
+        FileOutputStream os22 = null;
+        BufferedOutputStream bos22 = null;
+
+        try {
+            os22 = new FileOutputStream(BASE_PATH + "vrac.mag");
+            bos22 = new BufferedOutputStream(os22);
+            oos2 = new DataOutputStream(bos22);
+            ;
+
+            for (AbstractProduit produit : vrac.getAllProduits()) {
+                produit.writeProduits(oos2);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("impossibe d'aceder au fichier");
+        } finally {
+            try {
+                if (oos2 != null) {
+                    oos2.close();
+                }
+            } catch (IOException e) {
+                System.out.println("Impossible d'acceder au fichier");
+                e.printStackTrace();
+            }
+        }
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+
         ObjectOutputStream oos = null;
         FileOutputStream os2 = null;
         BufferedOutputStream bos2 = null;
@@ -415,7 +492,7 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
             oos = new ObjectOutputStream(bos2);
 
             for (AireI section : sections) {
-                if (section.getAllProduits().size() > 0 && section.getClass() != Vrac.class) {
+                if (section.getAllProduits().size() > 0) {
                     oos.writeObject(section);
                 }
 

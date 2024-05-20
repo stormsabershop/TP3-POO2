@@ -15,99 +15,6 @@ import java.util.*;
 
 public class Achat implements Descriptible, Lists {
 
-/*
-    private String acheteur;
-    private final double MONTANT_TAXES = 0.14;
-    private double montantRabais;
-    private double montantBrute;
-
-    private int numFacturation = 0;
-    private static int compteurFacture;
-
-    Panier panier;
-
-    private LocalDateTime momentAchat;
-
-    public Achat(String acheteurs, LocalDateTime momentAchat, double montantRabais) {
-        this.acheteur = acheteurs;
-        this.momentAchat = momentAchat;
-        this.montantRabais = montantRabais;
-        compteurFacture = 0;
-
-    }
-
-    public double calculcout() {
-        double prixPanier = 0;
-        for (int i = 0; i < panier.getAchats().size(); i++) {
-            prixPanier = panier.getAchats().get(i).getPrix();
-            prixPanier = prixPanier * (prixPanier - getMontantRabais());
-        }
-        return prixPanier;
-    }
-
-    public String imprimeFacture() {
-        return "Facturé à :" + getAcheteur() + "\n"
-                + "Facturé le :" + getMomentAchat() + "\n"
-                + "\n" + "Contient :" + compteurFacture
-                + "\n" + "Côut brute :" + getMontantBrute();
-    }
-
-
-    private String utilise2Decimale(double valeur) {
-        return String.format("%.2f", valeur);
-    }
-
-    public double getMontantBrute() {
-        double montant = 0;
-        for (int i = 0; i < produits.size(); i++) {
-            montant = produits.get(i).getPrix();
-            montant += montant;
-
-        }
-        return montant;
-    }
-
-    public void setMontantBrute(double montantBrute) {
-        this.montantBrute = montantBrute;
-    }
-
-    public LocalDateTime getMomentAchat() {
-        return momentAchat;
-    }
-
-    public void setMomentAchat(LocalDateTime momentAchat) {
-        this.momentAchat = momentAchat;
-    }
-
-    public String getAcheteur() {
-        return acheteur;
-    }
-
-    public void setAcheteur(String acheteur) {
-        this.acheteur = acheteur;
-    }
-
-
-    public int getNumFacturation() {
-        return numFacturation;
-    }
-
-
-    @Override
-    public String decrit() {
-        return "";
-    }
-
-    public double getMontantRabais() {
-        return montantRabais;
-    }
-
-    public void setMontantRabais(double montantRabais) {
-        this.montantRabais = montantRabais;
-    }
-
- */
-
     private String acheteur;
     private int contient;
     private LocalDateTime momentAchat;
@@ -133,6 +40,9 @@ public class Achat implements Descriptible, Lists {
 
     public static final double DELAI_FIXE_RABAISP = 4;
 
+    private String produitContient = "\n";
+    private String detailsRabais = "";
+
     public Achat(String acheteur, LocalDateTime momentAchat, double montantRabaisGlobal) {
         this.acheteur = acheteur;
         this.contient = 0;
@@ -148,7 +58,6 @@ public class Achat implements Descriptible, Lists {
         for (AbstractProduit produit : produits) {
             coutFinal += produit.getPrix();
         }
-        coutFinal -= calculerToutLesRabais();
         double rab = calculerRabaisVrac(coutFinal);
         if (rab > 0) {
             coutFinal -= rab;
@@ -157,6 +66,7 @@ public class Achat implements Descriptible, Lists {
         if (rab > 0) {
             coutFinal -= rab;
         }
+        coutFinal -= calculerToutLesRabais();
 
         return coutFinal;
     }
@@ -177,8 +87,11 @@ public class Achat implements Descriptible, Lists {
         this.acheteur = acheteur;
     }
 
-    public int calculerContient(){
+    public int calculerContient() {
         contient = produits.size();
+        for (AbstractProduit produit : produits) {
+            produitContient += produit.getNom() + " : " + produit.getPrix() + "\n";
+        }
         return contient;
     }
 
@@ -199,14 +112,22 @@ public class Achat implements Descriptible, Lists {
     }
 
     public String imprimeFacture() {
+        if (rabaisVrac >= 1) {
+            rabais += rabaisVrac;
+        }
+        if (rabaisPresentoir >= 1) {
+            rabais += rabaisVrac;
+        }
         return "Facturé à :" + getAcheteur() + "\n"
                 + "Facturé le :" + getMomentAchat() + "\n"
-                + "\n" + "Contient :" + contient
-                + "\n" + "Côut brute :" + montantBrute
-                + "\n" + "Rabais : - " + rabais
-                + "\n" + "Rabais Vrac : - " + rabaisVrac
-                + "\n" + "Rabais Presentoir : - " + rabaisPresentoir
-                + "\n" + "Côut final :" + coutFinal;
+                + "\n" + "Contient :" + contient + " produits"
+                + produitContient
+                + "\n" + "Côut brute :" + String.format("%.2f", montantBrute)
+                + "\n" + "Rabais accordés: " + String.format("%.2f", rabais)
+                + "\n" + "Taxes: " + String.format("%.2f", coutFinal * 0.15)
+                + "\n" + "Total: " + String.format("%.2f", (coutFinal - (coutFinal * 0.15)))
+                + "\n" + "Details des rabais accordés"
+                + "\n" + detailsRabais;
     }
 
     public double calculerToutLesRabais(){
@@ -218,8 +139,10 @@ public class Achat implements Descriptible, Lists {
         for (AbstractProduit produit: produits) {
             if (produit.getClass() == SabreLaser.class || produit.getClass() == Figurine.class){
                 rabais += ((15 * produit.getPrix()) / 100);
+                detailsRabais += "\n" + "rabais produit: " + produit.getNom() + " de " + String.format("%.2f", ((15 * produit.getPrix()) / 100));
             }
         }
+        detailsRabais += "\n" + "Rabais Global de " + String.format("%.2f", rabais + rabaisVrac + rabaisPresentoir);
         return rabais;
     }
 
@@ -233,6 +156,7 @@ public class Achat implements Descriptible, Lists {
         rabaisVrac = rabaisDuVrac;
         nombreProduitsAvantPanier = 0;
         nombreProduitsApresPanier = 0;
+        detailsRabais += "\n" + "section rabais - Vrac de " + String.format("%.2f", rabaisDuVrac);
         return rabaisDuVrac;
     }
 
@@ -244,6 +168,7 @@ public class Achat implements Descriptible, Lists {
             rabaisPresentoir += (((produit.getDate().getDayOfMonth()) - momentAchat.getDayOfMonth()) > DELAI_FIXE_RABAISP) ? produit.getPrix() * RAB_PRESENTOIR : 0;
         }
         produitsAchetesPresentoir = new ArrayList<>();
+        detailsRabais += "\n" + "section rabais - Presentoir de " + String.format("%.2f", rabaisPresentoir);
         return rabaisPresentoir;
     }
 
