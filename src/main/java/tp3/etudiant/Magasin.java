@@ -8,8 +8,7 @@ import tp3.echange.UI;
 import tp3.etudiant.boite.Boite;
 import tp3.etudiant.client.Achat;
 import tp3.etudiant.client.Panier;
-import tp3.etudiant.fichiers.MagasinReader;
-import tp3.etudiant.fichiers.MagasinWriter;
+import tp3.etudiant.fichiers.*;
 import tp3.etudiant.produit.Casque;
 import tp3.etudiant.produit.CasqueSansFil;
 import tp3.etudiant.produit.Figurine;
@@ -154,6 +153,7 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
             }
         }
         nombreProduitsApresPanier = vrac.getAllProduits().size() - nombreDeProduitsAjoutesDansLePanier;
+
     }
 
     public AireI provientDeAire(AbstractProduit produit) {
@@ -234,6 +234,7 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
 
     @Override
     public void reconstruit(File file) {
+
         try {
             Magasin magasin = MagasinReader.deserialize(file);
             this.achats = magasin.achats;
@@ -241,7 +242,7 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
             this.entrepot = magasin.entrepot;
             this.charite = magasin.charite;
             this.sections = magasin.sections;
-            this.vrac = magasin.vrac;
+            vrac.placerProduits(magasin.vrac.getAllProduits());
             this.airesDesPresentoires = magasin.airesDesPresentoires;
             this.nombreProduitsAvantPanier = magasin.nombreProduitsAvantPanier;
             this.nombreProduitsApresPanier = magasin.nombreProduitsApresPanier;
@@ -256,22 +257,27 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
     @Override
     public void viderMagasin() {
         historique.ajouterEvenement("le magasin de fait vider");
+        System.out.println("vider magasin debut");
         produitsDePresentoir = new ArrayList<>();
         this.achats = new ArrayList<>();
         this.panier = new Panier();
         this.entrepot = new Entrepot();
         this.vrac = new Vrac();
-        this.sections = new ArrayList<AireI>(List.of(vrac, new Presentoires()));
+        this.sections = new ArrayList<>(List.of(vrac, new Presentoires()));
+        vrac.viderAire();
         this.charite = new Charite();
         this.airesDesPresentoires = new AiresDesPresentoires();
         this.nombreProduitsAvantPanier = 0;
         this.nombreProduitsApresPanier = 0;
+        System.out.println("VIDE MAGASIN FIN");
+
     }
 
     @Override
     public String init(UI ui) {
         this.ui = ui;
         List<AbstractProduit> retListe = new ArrayList<>();
+        List<AbstractProduit> retListe2 = new ArrayList<>();
 
         DataInputStream dis = null;
 
@@ -323,15 +329,15 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
             while (true) {
                 String typeProuits = dis2.readUTF();
                 if (typeProuits.equals("Casque")) {
-                    retListe.add(new Casque(dis2.readUTF(), dis2.readDouble(), dis2.readBoolean()));
+                    retListe2.add(new Casque(dis2.readUTF(), dis2.readDouble(), dis2.readBoolean()));
                 }
                 if (typeProuits.equals("CasqueSansFil")) {
-                    retListe.add(new CasqueSansFil(dis2.readUTF(), dis2.readDouble(), dis2.readBoolean()));
+                    retListe2.add(new CasqueSansFil(dis2.readUTF(), dis2.readDouble(), dis2.readBoolean()));
                 }
                 if (typeProuits.equals("Figurine")) {
-                    retListe.add(new Figurine(dis2.readUTF(), dis2.readDouble()));
+                    retListe2.add(new Figurine(dis2.readUTF(), dis2.readDouble()));
                 } else if (typeProuits.equals("SabreLazer")) {
-                    retListe.add(new SabreLaser(dis2.readUTF(), dis2.readDouble(), dis2.readBoolean()));
+                    retListe2.add(new SabreLaser(dis2.readUTF(), dis2.readDouble(), dis2.readBoolean()));
                 }
 
 
@@ -345,7 +351,7 @@ public class Magasin implements Modele, Lists, VracNBproduits, Serializable {
             System.out.println("Impossible d'acceder au fichier");
             System.exit(1);
         } finally {
-            vrac.placerProduits(retListe);
+            vrac.placerProduits(retListe2);
             if (dis2 != null) {
                 try {
                     dis2.close();
